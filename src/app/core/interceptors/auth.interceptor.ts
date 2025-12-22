@@ -4,11 +4,8 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { catchError, throwError } from 'rxjs';
 
-
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const router = inject(Router);
-  
-  // NO inyectar AuthService - causa dependencia circular
   
   const authReq = req.clone({
     setHeaders: {
@@ -19,14 +16,18 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(authReq).pipe(
     catchError(error => {
-      if (error.status === 401) {
-        // Limpiar localStorage directamente
-        localStorage.removeItem('currentUser');
-        router.navigate(['/auth/login']);
+      if (error.status === 401) {        
+        const isStatusCheck = req.url.includes('/2fa/status') || 
+                              req.url.includes('/auth/me') ||
+                              req.url.includes('/auth/check');
+        
+        if (!isStatusCheck) {
+          localStorage.removeItem('currentUser');
+          router.navigate(['/auth/login']);
+        }
       }
       
       if (error.status === 403) {
-        // Leer usuario de localStorage directamente
         const userStr = localStorage.getItem('currentUser');
         if (userStr) {
           const user = JSON.parse(userStr);
