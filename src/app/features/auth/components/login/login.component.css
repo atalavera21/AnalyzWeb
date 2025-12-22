@@ -1,0 +1,593 @@
+/* ======================
+   AUTH PAGE CONTAINER
+   ====================== */
+
+.auth-page-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(68, 125, 155, 0.08) 0%,
+    rgba(26, 43, 54, 0.95) 50%,
+    rgba(16, 25, 31, 1) 100%
+  );
+  padding: 2rem 1rem;
+}
+
+/* Background Effects */
+.auth-bg-effects {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.neural-grid-auth {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+      rgba(231, 116, 49, 0.08) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(231, 116, 49, 0.08) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: grid-move-auth 25s linear infinite;
+}
+
+@keyframes grid-move-auth {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(60px, 60px);
+  }
+}
+
+.floating-particles-auth {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+      2px 2px at 25px 35px,
+      rgba(231, 116, 49, 0.3),
+      transparent
+    ),
+    radial-gradient(1px 1px at 85px 45px, rgba(68, 125, 155, 0.3), transparent),
+    radial-gradient(
+      1px 1px at 125px 85px,
+      rgba(215, 215, 215, 0.4),
+      transparent
+    );
+  background-repeat: repeat;
+  background-size: 180px 180px;
+  animation: particles-float-auth 18s ease-in-out infinite;
+}
+
+@keyframes particles-float-auth {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(1deg);
+  }
+}
+
+.ai-glow-orb-auth {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(50px);
+  animation: orb-float-auth 10s ease-in-out infinite;
+}
+
+.orb-1 {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(
+    circle,
+    rgba(231, 116, 49, 0.15) 0%,
+    transparent 70%
+  );
+  top: 10%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(
+    circle,
+    rgba(68, 125, 155, 0.12) 0%,
+    transparent 70%
+  );
+  bottom: 20%;
+  right: 25%;
+  animation-delay: 3s;
+}
+
+@keyframes orb-float-auth {
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-25px) scale(1.05);
+  }
+}
+
+/* ======================
+   AUTH CARD
+   ====================== */
+
+.auth-card-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 420px;
+}
+
+.auth-card-glass {
+  background: rgba(26, 43, 54, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(231, 116, 49, 0.15);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-card-glass::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--accent-color) 50%,
+    transparent 100%
+  );
+  opacity: 0.6;
+}
+
+/* Header */
+.auth-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.auth-brand .logo-glow {
+  background: var(--gradient-accent);
+  position: relative;
+}
+
+.auth-brand .logo-glow::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: var(--gradient-neural);
+  border-radius: 14px;
+  z-index: -1;
+  animation: rotate-gradient-auth 4s linear infinite;
+}
+
+@keyframes rotate-gradient-auth {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.auth-brand .brand-text {
+  background: linear-gradient(
+    135deg,
+    var(--text-primary) 0%,
+    var(--accent-color) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.auth-title {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  margin-bottom: 0.5rem;
+}
+
+.auth-subtitle {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* ======================
+   FORM STYLES
+   ====================== */
+
+.auth-form {
+  margin-bottom: 1rem;
+}
+
+.form-field {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+}
+
+/* ======================
+   PRIMENG OVERRIDES
+   ====================== */
+
+/* Input Text Styling - Más moderno */
+:host ::ng-deep .auth-input-field {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 2px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 1rem !important;
+  padding: 1.25rem 1rem 1.25rem 3rem !important;
+  color: var(--text-primary) !important;
+  font-size: 1rem !important;
+  height: 3.75rem !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  outline: none !important;
+}
+
+:host ::ng-deep .auth-input-field:focus {
+  border-color: var(--accent-color) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 0 0 4px rgba(231, 116, 49, 0.15),
+    0 4px 16px rgba(231, 116, 49, 0.2) !important;
+  transform: translateY(-1px) !important;
+  outline: none !important;
+}
+
+:host ::ng-deep .auth-input-field:focus-visible {
+  border-color: var(--accent-color) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 4px rgba(231, 116, 49, 0.15),
+    0 4px 16px rgba(231, 116, 49, 0.2) !important;
+}
+
+:host ::ng-deep .auth-input-field::placeholder {
+  color: var(--neutral-dark) !important;
+  font-weight: 400 !important;
+}
+
+:host ::ng-deep .auth-input-field.ng-invalid.ng-touched {
+  border-color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.05) !important;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.15),
+    0 4px 16px rgba(239, 68, 68, 0.2) !important;
+}
+
+/* Input Icon Styling - Iconos más grandes y mejor proporcionados */
+:host ::ng-deep .p-input-icon-left i {
+  color: var(--accent-color) !important;
+  left: 1.25rem !important;
+  font-size: 1.25rem !important;
+  opacity: 0.9 !important;
+  font-weight: 500 !important;
+}
+
+/* Password Component Styling */
+:host ::ng-deep .p-password {
+  width: 100% !important;
+}
+
+:host ::ng-deep .p-password .p-password-input {
+  width: 100% !important;
+  padding-right: 3.5rem !important;
+  outline: none !important;
+}
+
+:host ::ng-deep .p-password .p-password-input:focus {
+  border-color: var(--accent-color) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 0 0 4px rgba(231, 116, 49, 0.15),
+    0 4px 16px rgba(231, 116, 49, 0.2) !important;
+  transform: translateY(-1px) !important;
+  outline: none !important;
+}
+
+:host ::ng-deep .p-password .p-password-input:focus-visible {
+  border-color: var(--accent-color) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 4px rgba(231, 116, 49, 0.15),
+    0 4px 16px rgba(231, 116, 49, 0.2) !important;
+}
+
+/* MEJORA 2: Icono de mostrar/ocultar contraseña en color naranja */
+:host ::ng-deep .p-password .p-password-toggle-mask {
+  color: #e77431 !important; /* Color naranja específico */
+  right: 1.25rem !important;
+  font-size: 1.2rem !important;
+  opacity: 0.9 !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+}
+
+:host ::ng-deep .p-password .p-password-toggle-mask:hover {
+  color: #f58220 !important; /* Color naranja más claro en hover */
+  opacity: 1 !important;
+  transform: scale(1.1) !important;
+}
+
+:host ::ng-deep .p-password .p-password-toggle-mask:active {
+  color: #d4631f !important; /* Color naranja más oscuro cuando se hace clic */
+  transform: scale(0.95) !important;
+}
+
+/* MEJORA 1: Button Styling - Icono al lado del texto */
+:host ::ng-deep .auth-submit-button {
+  background: var(--gradient-accent) !important;
+  border: none !important;
+  border-radius: 1rem !important;
+  padding: 1.25rem 2rem !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  height: 3.75rem !important;
+  box-shadow: 0 8px 32px rgba(231, 116, 49, 0.4), 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.025em !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.75rem !important; /* Espacio entre icono y texto */
+}
+
+:host ::ng-deep .auth-submit-button .p-button-icon {
+  font-size: 1.1rem !important;
+  margin: 0 !important; /* Eliminar márgenes por defecto */
+  order: 1 !important; /* Poner el icono primero */
+}
+
+:host ::ng-deep .auth-submit-button .p-button-label {
+  font-weight: 700 !important;
+  order: 2 !important; /* Poner el texto después del icono */
+  margin: 0 !important; /* Eliminar márgenes por defecto */
+}
+
+:host ::ng-deep .auth-submit-button:hover:not(.p-disabled) {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 12px 48px rgba(231, 116, 49, 0.5),
+    0 4px 16px rgba(0, 0, 0, 0.15) !important;
+  background: linear-gradient(135deg, #e77431 0%, #f58220 100%) !important;
+}
+
+:host ::ng-deep .auth-submit-button:hover:not(.p-disabled) .p-button-icon {
+  transform: translateX(
+    2px
+  ) !important; /* Pequeña animación del icono en hover */
+}
+
+:host ::ng-deep .auth-submit-button:active:not(.p-disabled) {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 24px rgba(231, 116, 49, 0.4), 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+:host ::ng-deep .auth-submit-button.p-disabled {
+  opacity: 0.6 !important;
+  transform: none !important;
+  box-shadow: 0 4px 16px rgba(231, 116, 49, 0.2) !important;
+  background: var(--gradient-accent) !important;
+}
+
+/* Message Component Styling */
+:host ::ng-deep .p-message {
+  background: rgba(239, 68, 68, 0.1) !important;
+  border: 1px solid rgba(239, 68, 68, 0.2) !important;
+  border-radius: 1rem !important;
+  color: #fca5a5 !important;
+  padding: 1rem 1.25rem !important;
+}
+
+:host ::ng-deep .p-message .p-message-icon {
+  color: #ef4444 !important;
+}
+
+/* Error Text Styling */
+:host ::ng-deep .p-error {
+  color: #ef4444 !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  margin-top: 0.5rem !important;
+}
+
+/* ======================
+   FOOTER
+   ====================== */
+
+.auth-footer {
+  margin-top: 2rem;
+}
+
+.auth-divider {
+  position: relative;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.auth-divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+}
+
+.divider-text {
+  background: rgba(26, 43, 54, 0.8);
+  color: var(--neutral-dark);
+  padding: 0 1rem;
+  font-size: 0.875rem;
+  position: relative;
+  z-index: 1;
+}
+
+.auth-links {
+  margin-top: 1.5rem;
+}
+
+.auth-link {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.auth-link:hover {
+  color: var(--accent-dark);
+  text-decoration: underline;
+}
+
+.auth-link-secondary {
+  color: var(--neutral-color);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.auth-link-secondary:hover {
+  color: var(--accent-color);
+}
+
+.p-button.p-button-outlined.p-button-secondary {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.p-button.p-button-outlined.p-button-secondary:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ======================
+   RESPONSIVE DESIGN
+   ====================== */
+
+@media (max-width: 480px) {
+  .auth-page-container {
+    padding: 1rem 0.5rem;
+  }
+
+  .auth-card-glass {
+    padding: 2rem 1.5rem;
+    border-radius: 1rem;
+  }
+
+  .auth-title {
+    font-size: 1.75rem;
+  }
+
+  .auth-brand .logo-glow {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .auth-brand .brand-text {
+    font-size: 1.5rem;
+  }
+
+  :host ::ng-deep .auth-input-field,
+  :host ::ng-deep .auth-submit-button {
+    height: 3rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  :host ::ng-deep .auth-input-field {
+    padding: 0.75rem 0.75rem 0.75rem 2.25rem !important;
+  }
+
+  :host ::ng-deep .p-input-icon-left i {
+    left: 0.75rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  :host ::ng-deep .p-password .p-password-toggle-mask {
+    right: 0.75rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* Responsivo para el botón en móviles */
+  :host ::ng-deep .auth-submit-button {
+    gap: 0.5rem !important;
+    padding: 0.75rem 1.5rem !important;
+  }
+
+  :host ::ng-deep .auth-submit-button .p-button-icon {
+    font-size: 0.9rem !important;
+  }
+}
+
+/* ======================
+   ACCESSIBILITY
+   ====================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .neural-grid-auth,
+  .floating-particles-auth,
+  .ai-glow-orb-auth,
+  .rotate-gradient-auth {
+    animation: none;
+  }
+
+  /* Reducir animaciones en modo de accesibilidad */
+  :host ::ng-deep .auth-submit-button:hover:not(.p-disabled) .p-button-icon {
+    transform: none !important;
+  }
+
+  :host ::ng-deep .p-password .p-password-toggle-mask:hover {
+    transform: none !important;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .auth-card-glass {
+    background: var(--primary-color);
+    border: 2px solid var(--accent-color);
+  }
+
+  :host ::ng-deep .auth-input-field {
+    background: var(--primary-color) !important;
+    border: 2px solid var(--neutral-color) !important;
+  }
+
+  :host ::ng-deep .auth-input-field:focus {
+    border-color: var(--accent-color) !important;
+  }
+
+  /* Mejorar contraste para el icono de contraseña */
+  :host ::ng-deep .p-password .p-password-toggle-mask {
+    color: #ff8a00 !important; /* Color más brillante para alto contraste */
+  }
+}

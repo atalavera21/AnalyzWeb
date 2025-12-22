@@ -1,0 +1,357 @@
+/* ===== ARCHIVO: src/styles.css ===== */
+@import "tailwindcss";
+@import "primeicons/primeicons.css";
+@import "./utilities.css";
+
+/* Definición de colores personalizados para Tailwind v4 */
+@theme {
+  --color-primary: #273f4f;
+  --color-primary-light: #447d9b;
+  --color-accent: #e77431;
+  --color-accent-dark: #d65a1f;
+  --color-neutral: #d7d7d7;
+  --color-neutral-dark: #ababab;
+
+  /* Colores específicos para el sistema */
+  --color-glass-bg: rgba(39, 63, 79, 0.15);
+  --color-glass-bg-secondary: rgba(39, 63, 79, 0.25);
+  --color-glass-border: rgba(231, 116, 49, 0.2);
+  --color-glass-border-secondary: rgba(68, 125, 155, 0.3);
+
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #d7d7d7;
+  --color-text-accent: #e77431;
+}
+
+/* Variables CSS para usar en componentes */
+:root {
+  /* Colores principales */
+  --primary-color: #273f4f;
+  --primary-light: #447d9b;
+  --accent-color: #e77431;
+  --accent-dark: #d65a1f;
+  --neutral-color: #d7d7d7;
+  --neutral-dark: #ababab;
+
+  /* Colores de vidrio (glassmorphism) */
+  --glass-bg: rgba(39, 63, 79, 0.15);
+  --glass-bg-secondary: rgba(39, 63, 79, 0.25);
+  --glass-border: rgba(231, 116, 49, 0.2);
+  --glass-border-secondary: rgba(68, 125, 155, 0.3);
+
+  /* Colores de texto */
+  --text-primary: #ffffff;
+  --text-secondary: #d7d7d7;
+  --text-accent: #e77431;
+
+  /* Gradientes */
+  --gradient-primary: linear-gradient(135deg, #273f4f 0%, #447d9b 100%);
+  --gradient-accent: linear-gradient(135deg, #e77431 0%, #d65a1f 100%);
+  --gradient-neural: linear-gradient(45deg, #273f4f, #447d9b, #e77431, #273f4f);
+}
+
+/* Estilos base del cuerpo */
+body {
+  background: linear-gradient(135deg, #1a2b36 0%, #273f4f 50%, #1a2b36 100%);
+  min-height: 100vh;
+  color: var(--text-primary);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#root,
+app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden; /* Previene scroll horizontal */
+}
+
+/* Clases utilitarias personalizadas */
+.navbar-glass {
+  background: rgba(39, 63, 79, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(231, 116, 49, 0.3);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-menu-glass {
+  background: rgba(39, 63, 79, 0.98);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-left: 1px solid rgba(231, 116, 49, 0.3);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+}
+
+.logo-glow {
+  background: var(--gradient-accent);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.logo-glow::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: var(--gradient-neural);
+  border-radius: 14px;
+  z-index: -1;
+  animation: rotate-gradient 3s linear infinite;
+}
+
+.brand-text {
+  background: linear-gradient(
+    135deg,
+    var(--text-primary) 0%,
+    var(--accent-color) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  position: relative;
+}
+
+.brand-text::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.brand-text:hover::before {
+  opacity: 1;
+}
+
+.nav-link {
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+  background: var(--glass-bg);
+}
+
+.nav-link.router-link-active {
+  color: var(--accent-color);
+  background: var(--glass-bg-secondary);
+}
+
+.nav-button-primary {
+  background: var(--gradient-accent);
+  color: var(--text-primary);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-button-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.nav-button-primary:hover::before {
+  left: 100%;
+}
+
+.user-avatar {
+  background: var(--gradient-primary);
+  border: 2px solid var(--glass-border);
+  position: relative;
+}
+
+.user-avatar::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: var(--gradient-neural);
+  border-radius: 50%;
+  z-index: -1;
+  animation: pulse-glow 2s ease-in-out infinite alternate;
+}
+
+.logout-btn {
+  background: rgba(231, 116, 49, 0.1);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: rgba(231, 116, 49, 0.2);
+  color: var(--text-primary);
+  border-color: var(--accent-color);
+}
+
+.badge-glow .p-badge {
+  background: var(--gradient-accent) !important;
+  box-shadow: 0 0 10px rgba(231, 116, 49, 0.3);
+}
+
+.corporate-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.corporate-hover:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(231, 116, 49, 0.2);
+}
+
+.hamburger-line {
+  transform-origin: center;
+}
+
+.hamburger-active .hamburger-line:first-child {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger-active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-active .hamburger-line:last-child {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Animaciones */
+@keyframes rotate-gradient {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.ai-shimmer {
+  background-size: 200% 200%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.neural-pulse {
+  animation: neural-pulse 2s ease-in-out infinite;
+}
+
+@keyframes neural-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(231, 116, 49, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(231, 116, 49, 0.6),
+      0 0 30px rgba(68, 125, 155, 0.3);
+  }
+}
+
+/* Clases de utilidad para glassmorphism */
+.glass-bg {
+  background: var(--glass-bg);
+}
+
+.glass-bg-secondary {
+  background: var(--glass-bg-secondary);
+}
+
+.glass-border {
+  border-color: var(--glass-border);
+}
+
+.glass-border-secondary {
+  border-color: var(--glass-border-secondary);
+}
+
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-accent {
+  color: var(--text-accent);
+}
+
+.bg-gradient-accent {
+  background: var(--gradient-accent);
+}
+
+/* Responsividad adicional */
+@media (max-width: 768px) {
+  .brand-text {
+    font-size: 1.5rem;
+  }
+
+  .logo-glow {
+    width: 2rem;
+    height: 2rem;
+  }
+}

@@ -1,0 +1,177 @@
+/* ======================
+   PROFESSIONAL FOOTER
+   ====================== */
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.footer-professional {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background: #1a2b36;
+  border-top: 1px solid rgba(68, 125, 155, 0.2);
+}
+
+/* Main Content */
+.footer-content {
+  background: #1a2b36;
+}
+
+.footer-brand {
+  max-width: 280px;
+}
+
+.logo-simple {
+  background: linear-gradient(135deg, #E77431 0%, #D65A1F 100%);
+}
+
+/* Footer Sections */
+.footer-section {
+  min-height: auto;
+}
+
+.footer-title {
+  color: #FFFFFF;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  space-y: 0.75rem;
+}
+
+.footer-links li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-link {
+  color: #9CA3AF;
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.2s ease;
+  font-weight: 400;
+}
+
+.footer-link:hover {
+  color: #E77431;
+}
+
+/* Bottom Bar */
+.footer-bottom {
+  background: #16232d;
+  border-top: 1px solid rgba(68, 125, 155, 0.1);
+}
+
+.footer-left, .footer-center, .footer-right {
+  display: flex;
+  align-items: center;
+}
+
+/* Tech Badge */
+:host ::ng-deep .tech-badge-minimal {
+  background: rgba(68, 125, 155, 0.1) !important;
+  color: #447D9B !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  padding: 0.25rem 0.75rem !important;
+  border: 1px solid rgba(68, 125, 155, 0.2) !important;
+  border-radius: 6px !important;
+}
+
+/* ======================
+   RESPONSIVE DESIGN
+   ====================== */
+
+@media (max-width: 768px) {
+  .footer-content {
+    padding: 3rem 0;
+  }
+  
+  .footer-content .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .footer-brand {
+    grid-column: span 2;
+    text-align: center;
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .footer-bottom .flex {
+    flex-direction: column;
+    space-y: 1rem;
+  }
+  
+  .footer-right {
+    flex-direction: column;
+    space-y: 1rem;
+  }
+  
+  .footer-legal {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-content .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .footer-brand {
+    grid-column: span 1;
+  }
+  
+  .footer-right {
+    align-items: center;
+  }
+  
+  .footer-legal {
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* ======================
+   ACCESSIBILITY
+   ====================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-link {
+    transition: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .footer-professional {
+    background: #000000;
+    border-top: 2px solid #E77431;
+  }
+  
+  .footer-bottom {
+    background: #111111;
+    border-top: 1px solid #E77431;
+  }
+  
+  .footer-link {
+    border: 1px solid transparent;
+  }
+  
+  .footer-link:hover {
+    border-color: #E77431;
+  }
+}

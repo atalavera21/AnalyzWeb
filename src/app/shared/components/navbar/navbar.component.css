@@ -1,0 +1,197 @@
+/* Estilos específicos del componente navbar */
+/* La mayoría de estilos están en styles.css global */
+
+:host {
+  display: block;
+  position: relative;
+  z-index: 50;
+}
+
+/* Mejoras específicas para el navbar */
+.navbar-glass {
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.navbar-glass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--accent-color) 20%, 
+    var(--primary-light) 50%, 
+    var(--accent-color) 80%, 
+    transparent 100%
+  );
+  animation: shimmer-line 3s ease-in-out infinite;
+}
+
+@keyframes shimmer-line {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+/* Efectos hover mejorados para los enlaces */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-accent);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after,
+.nav-link.router-link-active::after {
+  width: 80%;
+}
+
+/* Hamburger Button */
+.hamburger-container {
+  width: 24px;
+  height: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger-line {
+  transform-origin: center;
+  display: block;
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Mobile Menu Styles */
+.mobile-nav-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.mobile-nav-item:hover {
+  background: rgba(231, 116, 49, 0.15);
+  border-color: rgba(231, 116, 49, 0.3);
+  transform: translateX(4px);
+}
+
+.mobile-nav-active {
+  background: rgba(231, 116, 49, 0.2) !important;
+  border-color: rgba(231, 116, 49, 0.5) !important;
+  color: var(--accent-color) !important;
+}
+
+.mobile-nav-button {
+  background: var(--gradient-accent);
+  border: none;
+  box-shadow: 0 4px 15px rgba(231, 116, 49, 0.3);
+}
+
+.mobile-nav-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(231, 116, 49, 0.4);
+}
+
+.logout-btn-mobile {
+  background: rgba(231, 116, 49, 0.1);
+  border: 1px solid rgba(231, 116, 49, 0.3);
+  color: white;
+}
+
+.logout-btn-mobile:hover {
+  background: rgba(231, 116, 49, 0.2);
+  border-color: rgba(231, 116, 49, 0.5);
+}
+
+/* Animación del menú */
+.mobile-menu-glass {
+  box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Hover states específicos */
+.user-avatar:hover {
+  animation: avatar-glow 1s ease-in-out;
+}
+
+@keyframes avatar-glow {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.2) drop-shadow(0 0 10px var(--accent-color)); }
+}
+
+/* Estados de carga */
+.logout-btn:disabled {
+  background: rgba(68, 125, 155, 0.1);
+  cursor: not-allowed;
+}
+
+.logout-btn:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .mobile-nav-item,
+  .mobile-nav-button {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+}
+
+/* User avatar en móvil */
+.mobile-menu-glass .user-avatar {
+  border: 2px solid rgba(231, 116, 49, 0.3);
+  background: var(--gradient-accent);
+}
+
+/* Focus states para accesibilidad */
+.nav-link:focus,
+.nav-button-primary:focus,
+.logout-btn:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .navbar-glass {
+    background: var(--primary-color);
+    border-bottom: 2px solid var(--accent-color);
+  }
+  
+  .nav-link {
+    border: 1px solid transparent;
+  }
+  
+  .nav-link:hover,
+  .nav-link:focus {
+    border-color: var(--accent-color);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .logo-glow,
+  .brand-text,
+  .user-avatar,
+  .badge-glow ::ng-deep .p-badge {
+    animation: none;
+  }
+  
+  .nav-link::after,
+  .corporate-hover {
+    transition: none;
+  }
+}

@@ -1,0 +1,300 @@
+/* Clases utilitarias reutilizables para todo el proyecto */
+
+/* Botones del sistema */
+.btn-primary {
+  background: var(--gradient-accent);
+  color: var(--text-primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(231, 116, 49, 0.3);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-secondary {
+  background: var(--glass-bg-secondary);
+  color: var(--text-secondary);
+  border: 1px solid var(--glass-border);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: var(--glass-bg);
+  color: var(--text-primary);
+  border-color: var(--accent-color);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--accent-color);
+  border: 2px solid var(--accent-color);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-outline:hover {
+  background: var(--accent-color);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(231, 116, 49, 0.3);
+}
+
+/* Cards y contenedores */
+.card-glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.card-glass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--gradient-accent);
+  border-radius: 1rem 1rem 0 0;
+  opacity: 0.5;
+}
+
+.card-primary {
+  background: var(--gradient-primary);
+  color: var(--text-primary);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(39, 63, 79, 0.3);
+}
+
+.card-accent {
+  background: var(--gradient-accent);
+  color: var(--text-primary);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(231, 116, 49, 0.3);
+}
+
+/* Inputs del sistema */
+.input-glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.input-glass:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  background: var(--glass-bg-secondary);
+  box-shadow: 0 0 0 3px rgba(231, 116, 49, 0.1);
+}
+
+.input-glass::placeholder {
+  color: var(--neutral-dark);
+}
+
+/* Texto y tipografía */
+.text-gradient-primary {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-accent {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-ai {
+  background: var(--gradient-neural);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Badges y etiquetas */
+.badge-primary {
+  background: var(--gradient-primary);
+  color: var(--text-primary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-accent {
+  background: var(--gradient-accent);
+  color: var(--text-primary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-outline {
+  background: transparent;
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Efectos y animaciones */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite alternate;
+}
+
+.neural-network {
+  background: var(--gradient-neural);
+  background-size: 400% 400%;
+  animation: neural-flow 4s ease-in-out infinite;
+}
+
+@keyframes neural-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.ai-border {
+  border: 2px solid transparent;
+  background: linear-gradient(var(--glass-bg), var(--glass-bg)) padding-box,
+              var(--gradient-neural) border-box;
+  animation: rotate-border 3s linear infinite;
+}
+
+@keyframes rotate-border {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* Estados de carga */
+.loading-shimmer {
+  background: linear-gradient(90deg, 
+    var(--glass-bg) 25%, 
+    var(--glass-bg-secondary) 50%, 
+    var(--glass-bg) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Separadores */
+.divider-glass {
+  height: 1px;
+  background: var(--glass-border);
+  margin: 1rem 0;
+}
+
+.divider-gradient {
+  height: 2px;
+  background: var(--gradient-accent);
+  margin: 1.5rem 0;
+  border-radius: 1px;
+  opacity: 0.6;
+}
+
+/* Overlays */
+.overlay-glass {
+  background: rgba(39, 63, 79, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.overlay-dark {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .card-glass,
+  .card-primary,
+  .card-accent {
+    padding: 1rem;
+  }
+  
+  .btn-primary,
+  .btn-secondary,
+  .btn-outline {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Estados de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .pulse-glow,
+  .neural-network,
+  .ai-border,
+  .loading-shimmer,
+  .text-ai {
+    animation: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .card-glass {
+    background: var(--primary-color);
+    border: 2px solid var(--accent-color);
+  }
+  
+  .input-glass {
+    background: var(--primary-color);
+    border: 2px solid var(--neutral-color);
+  }
+}

@@ -1,0 +1,298 @@
+<nav
+  class="navbar-glass sticky top-0"
+  [ngClass]="{ 'z-30': isMenuOpen, 'z-50': !isMenuOpen }"
+>
+  <div class="w-full px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center h-16">
+      <!-- Brand/Logo - Lado izquierdo -->
+      <div class="flex items-center">
+        <a
+          routerLink="/"
+          class="flex items-center space-x-3 hover:opacity-80 transition-opacity"
+        >
+          <div class="logo-glow w-8 h-8 ai-shimmer neural-pulse">
+            <i class="pi pi-chart-bar text-white text-sm relative z-10"></i>
+          </div>
+          <span class="brand-text text-xl" data-text="SurveyAI">
+            SurveyAI
+          </span>
+        </a>
+      </div>
+
+      <div class="flex-1"></div>
+
+      <!-- Desktop Navigation - Lado derecho -->
+      <div class="hidden md:flex items-center space-x-6">
+        <!-- Menu para usuarios no autenticados -->
+        <ng-container *ngIf="!isAuthenticated">
+          <a routerLink="/" class="nav-link" routerLinkActive="text-accent">
+            Inicio
+          </a>
+          <a routerLink="/auth/login" class="nav-link"> Iniciar Sesión </a>
+          <a
+            routerLink="/auth/register"
+            class="nav-button-primary corporate-hover px-6 py-2 rounded-lg font-medium"
+          >
+            Registrarse
+          </a>
+        </ng-container>
+
+        <!-- Menu para usuarios autenticados -->
+        <!-- Menu para usuarios autenticados -->
+        <ng-container *ngIf="isAuthenticated">
+          <button (click)="navigateToUserArea()" class="nav-link">
+            Mi Panel
+          </button>
+
+          <!-- User Info - ESTRUCTURA MEJORADA -->
+          <div
+            class="flex items-center space-x-4 pl-6 ml-6 border-l border-glass-border"
+          >
+            <!-- Avatar -->
+            <div
+              class="user-avatar w-10 h-10 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0"
+            >
+              <img
+                *ngIf="currentUser()?.profilePicture; else defaultIcon"
+                [src]="currentUser()!.profilePicture"
+                [alt]="currentUser()?.firstName + ' ' + currentUser()?.lastName"
+                class="w-full h-full object-cover"
+              />
+              <ng-template #defaultIcon>
+                <i class="pi pi-user text-white text-sm"></i>
+              </ng-template>
+            </div>
+
+            <!-- Info del usuario -->
+            <div class="flex flex-col">
+              <div class="font-medium text-gray-100 text-base">
+                {{ currentUser()?.firstName }}
+              </div>
+              <p-badge
+                class="badge-glow mt-1"
+                [value]="
+                  (currentUser()?.roles ?? []).includes('Admin')
+                    ? 'Admin'
+                    : 'Usuario'
+                "
+                [severity]="
+                  (currentUser()?.roles ?? []).includes('Admin')
+                    ? 'info'
+                    : 'secondary'
+                "
+                styleClass="text-xs"
+              >
+              </p-badge>
+            </div>
+
+            <!-- Botón de logout -->
+            <button
+              (click)="logout()"
+              [disabled]="loading"
+              class="logout-btn corporate-hover text-white text-sm font-medium flex items-center space-x-2 px-4 py-2 rounded-md disabled:opacity-50 ml-2"
+            >
+              <i
+                class="pi pi-spin pi-spinner text-sm"
+                *ngIf="loading; else logoutIcon"
+              ></i>
+              <ng-template #logoutIcon>
+                <i class="pi pi-sign-out text-sm"></i>
+              </ng-template>
+              <span>{{ loading ? "Cerrando..." : "Salir" }}</span>
+            </button>
+          </div>
+        </ng-container>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="md:hidden flex-shrink-0">
+        <button
+          (click)="toggleMenu()"
+          class="p-2 rounded-md hover:bg-glass-bg-secondary transition-all duration-300 corporate-hover relative z-50"
+        >
+          <div class="hamburger-container">
+            <div
+              class="hamburger-line w-6 h-0.5 bg-white transition-all duration-300 mb-1"
+              [ngClass]="{
+                'rotate-45 translate-y-2': isMenuOpen,
+                'rotate-0 translate-y-0': !isMenuOpen
+              }"
+            ></div>
+            <div
+              class="hamburger-line w-6 h-0.5 bg-white transition-all duration-300 mb-1"
+              [ngClass]="{
+                'opacity-0': isMenuOpen,
+                'opacity-100': !isMenuOpen
+              }"
+            ></div>
+            <div
+              class="hamburger-line w-6 h-0.5 bg-white transition-all duration-300"
+              [ngClass]="{
+                '-rotate-45 -translate-y-2': isMenuOpen,
+                'rotate-0 translate-y-0': !isMenuOpen
+              }"
+            ></div>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu Fullscreen -->
+<div
+  class="mobile-menu-container md:hidden fixed inset-0 z-40"
+  [ngClass]="{
+    'opacity-100 pointer-events-auto': isMenuOpen,
+    'opacity-0 pointer-events-none': !isMenuOpen
+  }"
+>
+  <!-- Background Overlay -->
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 transition-opacity duration-300"
+    (click)="closeMenu()"
+  ></div>
+
+  <!-- Menu Content -->
+  <div
+    class="relative z-10 flex flex-col h-full transform transition-transform duration-300"
+    [ngClass]="{
+      'translate-y-0': isMenuOpen,
+      'translate-y-full': !isMenuOpen
+    }"
+  >
+    <!-- Header con logo y close button -->
+    <div class="flex items-center justify-between p-6 border-b border-gray-600">
+      <div class="flex items-center space-x-3">
+        <div
+          class="logo-glow w-10 h-10 ai-shimmer rounded-xl flex items-center justify-center relative"
+        >
+          <i class="pi pi-chart-bar text-white text-lg relative z-10"></i>
+        </div>
+        <span class="text-white text-2xl font-bold">SurveyAI</span>
+      </div>
+      <button
+        (click)="closeMenu()"
+        class="p-2 hover:bg-gray-700 rounded-lg transition-colors duration-200"
+      >
+        <i class="pi pi-times text-white text-2xl"></i>
+      </button>
+    </div>
+
+    <!-- Navigation Items -->
+    <div class="flex-1 py-8 px-6 overflow-y-auto">
+      <!-- Menu para usuarios no autenticados -->
+      <ng-container *ngIf="!isAuthenticated">
+        <div class="space-y-4">
+          <a
+            routerLink="/"
+            (click)="closeMenu()"
+            class="mobile-nav-item flex items-center px-6 py-4 rounded-xl transition-all duration-200 text-white text-lg bg-white bg-opacity-5 border border-white border-opacity-10"
+            routerLinkActive="mobile-nav-active"
+          >
+            <i class="pi pi-home mr-4 text-xl w-6 flex-shrink-0"></i>
+            <span>Inicio</span>
+          </a>
+
+          <a
+            routerLink="/auth/login"
+            (click)="closeMenu()"
+            class="mobile-nav-item flex items-center px-6 py-4 rounded-xl transition-all duration-200 text-white text-lg bg-white bg-opacity-5 border border-white border-opacity-10"
+          >
+            <i class="pi pi-sign-in mr-4 text-xl w-6 flex-shrink-0"></i>
+            <span>Iniciar Sesión</span>
+          </a>
+
+          <a
+            routerLink="/auth/register"
+            (click)="closeMenu()"
+            class="mobile-nav-button flex items-center justify-center px-6 py-4 rounded-xl font-semibold transition-all duration-200 text-white text-lg mt-6 bg-gradient-to-r from-orange-600 to-orange-500 shadow-lg"
+          >
+            <i class="pi pi-user-plus mr-3 text-xl"></i>
+            <span>Registrarse</span>
+          </a>
+        </div>
+      </ng-container>
+
+      <!-- Menu para usuarios autenticados -->
+      <ng-container *ngIf="isAuthenticated">
+        <div class="space-y-4">
+          <a
+            routerLink="/"
+            (click)="closeMenu()"
+            class="mobile-nav-item flex items-center px-6 py-4 rounded-xl transition-all duration-200 text-white text-lg bg-white bg-opacity-5 border border-white border-opacity-10"
+            routerLinkActive="mobile-nav-active"
+          >
+            <i class="pi pi-home mr-4 text-xl w-6 flex-shrink-0"></i>
+            <span>Inicio</span>
+          </a>
+
+          <button
+            (click)="navigateToUserAreaAndClose()"
+            class="mobile-nav-item flex items-center w-full px-6 py-4 rounded-xl transition-all duration-200 text-white text-lg text-left bg-white bg-opacity-5 border border-white border-opacity-10"
+          >
+            <i class="pi pi-th-large mr-4 text-xl w-6 flex-shrink-0"></i>
+            <span>Mi Panel</span>
+          </button>
+
+          <!-- User Info Card -->
+          <div
+            class="bg-gray-800 bg-opacity-50 rounded-xl p-6 mt-8 border border-gray-600"
+          >
+            <div class="flex items-center space-x-4 mb-6">
+              <div
+                class="user-avatar w-12 h-12 rounded-full flex items-center justify-center bg-gradient-to-r from-orange-600 to-orange-500 overflow-hidden"
+              >
+                <img
+                  *ngIf="currentUser()?.profilePicture; else defaultIconMobile"
+                  [src]="currentUser()!.profilePicture"
+                  [alt]="
+                    currentUser()?.firstName + ' ' + currentUser()?.lastName
+                  "
+                  class="w-full h-full object-cover"
+                />
+                <ng-template #defaultIconMobile>
+                  <i class="pi pi-user text-white text-lg"></i>
+                </ng-template>
+              </div>
+              <div class="flex-1">
+                <div class="font-semibold text-white text-lg">
+                  {{ currentUser()?.firstName }}
+                </div>
+                <p-badge
+                  [value]="
+                    (currentUser()?.roles ?? []).includes('Admin')
+                      ? 'Admin'
+                      : 'Usuario'
+                  "
+                  [severity]="
+                    (currentUser()?.roles ?? []).includes('Admin')
+                      ? 'info'
+                      : 'secondary'
+                  "
+                  styleClass="text-sm mt-1"
+                >
+                </p-badge>
+              </div>
+            </div>
+
+            <button
+              (click)="logout()"
+              [disabled]="loading"
+              class="logout-btn-mobile w-full flex items-center justify-center space-x-3 font-semibold py-4 px-4 rounded-xl transition-all duration-200 disabled:opacity-50 text-lg bg-red-600 bg-opacity-20 border border-red-500 border-opacity-30 text-white hover:bg-red-600 hover:bg-opacity-30"
+            >
+              <i
+                class="pi pi-spin pi-spinner text-lg"
+                *ngIf="loading; else logoutIconMobile"
+              ></i>
+              <ng-template #logoutIconMobile>
+                <i class="pi pi-sign-out text-lg"></i>
+              </ng-template>
+              <span>{{ loading ? "Cerrando..." : "Cerrar Sesión" }}</span>
+            </button>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

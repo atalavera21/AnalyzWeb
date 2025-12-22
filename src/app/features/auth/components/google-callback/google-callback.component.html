@@ -1,0 +1,58 @@
+<div class="auth-page-container">
+      <div class="auth-bg-effects">
+        <div class="neural-grid-auth"></div>
+        <div class="floating-particles-auth"></div>
+        <div class="ai-glow-orb-auth orb-1"></div>
+        <div class="ai-glow-orb-auth orb-2"></div>
+      </div>
+
+      <div class="auth-card-container">
+        <div class="auth-card-glass">
+          <div class="text-center">
+            <div class="auth-brand mb-6">
+              <div class="flex items-center justify-center space-x-3">
+                <div
+                  class="logo-glow w-12 h-12 ai-shimmer rounded-xl flex items-center justify-center"
+                >
+                  <i
+                    class="pi pi-chart-bar text-white text-lg relative z-10"
+                  ></i>
+                </div>
+                <span class="brand-text text-2xl font-bold">SurveyAI</span>
+              </div>
+            </div>
+
+            <div *ngIf="loading" class="space-y-4">
+              <p-progressSpinner
+                styleClass="w-16 h-16"
+                strokeWidth="4"
+                animationDuration="1s"
+              >
+              </p-progressSpinner>
+              <h2 class="text-xl font-semibold text-white">
+                Completando autenticación...
+              </h2>
+              <p class="text-neutral-300">
+                Por favor espera mientras procesamos tu información
+              </p>
+            </div>
+
+            <div *ngIf="error" class="space-y-4">
+              <i class="pi pi-exclamation-triangle text-red-400 text-4xl"></i>
+              <h2 class="text-xl font-semibold text-white">
+                Error de Autenticación
+              </h2>
+              <p-message severity="error" [text]="error" styleClass="w-full">
+              </p-message>
+              <p-button
+                label="Volver al login"
+                icon="pi pi-arrow-left"
+                styleClass="mt-4"
+                (click)="goToLogin()"
+              >
+              </p-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

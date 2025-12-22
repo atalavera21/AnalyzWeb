@@ -1,0 +1,528 @@
+<!-- Hero Section -->
+<section class="hero-section relative min-h-screen flex items-center justify-center overflow-hidden">
+  <!-- Background Effects -->
+  <div class="hero-bg-effects absolute inset-0 z-0">
+    <div class="neural-grid"></div>
+    <div class="floating-particles"></div>
+    <div class="ai-glow-orb ai-orb-1"></div>
+    <div class="ai-glow-orb ai-orb-2"></div>
+    <div class="ai-glow-orb ai-orb-3"></div>
+  </div>
+
+  <!-- Hero Content -->
+  <div class="hero-content relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="hero-badge mb-6">
+      <p-badge 
+        value="Potenciado por Inteligencia Artificial" 
+        severity="info"
+        styleClass="badge-ai-powered text-sm px-4 py-2">
+        <i class="pi pi-sparkles text-sm mr-2"></i>
+      </p-badge>
+    </div>
+
+    <h1 class="hero-title text-4xl sm:text-5xl lg:text-7xl font-bold mb-6">
+      <span class="text-gradient-neural block">Transforma</span>
+      <span class="text-white block">tus Encuestas en</span>
+      <span class="text-gradient-accent block">Insights Inteligentes</span>
+    </h1>
+
+    <p class="hero-description text-lg sm:text-xl text-neutral-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+      SurveyAI revoluciona la forma en que analizas feedback. Crea encuestas dinámicas, 
+      obtén respuestas en tiempo real y descubre patrones ocultos con análisis de IA 
+      que determina el sentimiento y la satisfacción de tus usuarios.
+    </p>
+
+    <div class="hero-actions flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+      <p-button 
+        label="Comenzar Ahora" 
+        severity="info"
+        size="large"
+        icon="pi pi-rocket"
+        styleClass="btn-hero-primary px-8 py-3 text-lg font-semibold"
+        [rounded]="true"
+        (onClick)="onStartNow()">
+      </p-button>
+      
+      <p-button 
+        label="Ver Demo" 
+        severity="secondary"
+        size="large"
+        icon="pi pi-play"
+        styleClass="btn-hero-secondary px-8 py-3 text-lg font-semibold"
+        [outlined]="true"
+        [rounded]="true"
+        (onClick)="onViewDemo()">
+      </p-button>
+    </div>
+
+    <!-- Hero Stats -->
+    <div class="hero-stats grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mx-auto">
+      <p-card styleClass="stat-card bg-transparent border-0 shadow-none">
+        <div class="stat-number text-gradient-accent text-3xl font-bold">99.2%</div>
+        <div class="stat-label text-neutral-300 text-sm mt-1">Precisión IA</div>
+      </p-card>
+      
+      <p-card styleClass="stat-card bg-transparent border-0 shadow-none">
+        <div class="stat-number text-gradient-accent text-3xl font-bold">+250K</div>
+        <div class="stat-label text-neutral-300 text-sm mt-1">Respuestas Analizadas</div>
+      </p-card>
+      
+      <p-card styleClass="stat-card bg-transparent border-0 shadow-none">
+        <div class="stat-number text-gradient-accent text-3xl font-bold">Real-time</div>
+        <div class="stat-label text-neutral-300 text-sm mt-1">Análisis Instantáneo</div>
+      </p-card>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator-container absolute bottom-31 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
+    <div class="scroll-text text-neutral-300 text-sm mb-2 animate-pulse">
+      Descubre más características
+    </div>
+    <div class="scroll-arrow-container">
+      <div class="scroll-line"></div>
+      <i class="pi pi-chevron-down text-accent-color animate-bounce text-xl"></i>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section py-20 relative">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+    <!-- Section Header -->
+    <div class="section-header text-center mb-16">
+      <h2 class="section-title text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+        <span class="text-gradient-primary">Características</span>
+        <span class="text-white"> Innovadoras</span>
+      </h2>
+      <p class="section-description text-lg text-neutral-300 max-w-2xl mx-auto">
+        Descubre cómo SurveyAI combina la potencia de la inteligencia artificial 
+        con una interfaz intuitiva para revolucionar tus análisis de feedback.
+      </p>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="features-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Feature 1: AI Analysis -->
+      <p-card styleClass="feature-card ai-shimmer glass-bg border-glass-border">
+        <ng-template pTemplate="header">
+          <div class="feature-icon bg-gradient-accent w-16 h-16 rounded-full flex items-center justify-center mx-auto mt-4">
+            <i class="pi pi-brain text-white text-2xl"></i>
+          </div>
+        </ng-template>
+        
+        <h3 class="feature-title text-xl font-bold text-white mb-3 text-center">
+          Análisis con IA
+        </h3>
+        <p class="feature-description text-neutral-300 mb-4 text-center">
+          Algoritmos avanzados analizan automáticamente el sentimiento de cada respuesta, 
+          clasificando comentarios como positivos o negativos con precisión excepcional.
+        </p>
+        
+        <ng-template pTemplate="footer">
+          <div class="text-center">
+            <p-badge value="Machine Learning" severity="info"></p-badge>
+          </div>
+        </ng-template>
+      </p-card>
+
+      <!-- Feature 2: Dynamic Surveys -->
+      <p-card styleClass="feature-card glass-bg border-glass-border">
+        <ng-template pTemplate="header">
+          <div class="feature-icon bg-gradient-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mt-4">
+            <i class="pi pi-chart-bar text-white text-2xl"></i>
+          </div>
+        </ng-template>
+        
+        <h3 class="feature-title text-xl font-bold text-white mb-3 text-center">
+          Encuestas Dinámicas
+        </h3>
+        <p class="feature-description text-neutral-300 mb-4 text-center">
+          Crea encuestas personalizadas con múltiples tipos de preguntas. 
+          Los administradores tienen control total sobre el diseño y distribución.
+        </p>
+        
+        <ng-template pTemplate="footer">
+          <div class="text-center">
+            <p-badge value="Personalizable" severity="warn"></p-badge>
+          </div>
+        </ng-template>
+      </p-card>
+
+      <!-- Feature 3: Real-time Reports -->
+      <p-card styleClass="feature-card glass-bg border-glass-border">
+        <ng-template pTemplate="header">
+          <div class="feature-icon bg-gradient-secondary w-16 h-16 rounded-full flex items-center justify-center mx-auto mt-4">
+            <i class="pi pi-chart-line text-white text-2xl"></i>
+          </div>
+        </ng-template>
+        
+        <h3 class="feature-title text-xl font-bold text-white mb-3 text-center">
+          Reportes en Tiempo Real
+        </h3>
+        <p class="feature-description text-neutral-300 mb-4 text-center">
+          Visualiza resultados instantáneamente con gráficos interactivos y 
+          métricas actualizadas en tiempo real conforme llegan las respuestas.
+        </p>
+        
+        <ng-template pTemplate="footer">
+          <div class="text-center">
+            <p-badge value="Tiempo Real" severity="success"></p-badge>
+          </div>
+        </ng-template>
+      </p-card>
+
+      <!-- Feature 4: Data Export -->
+      <p-card styleClass="feature-card glass-bg border-glass-border">
+        <ng-template pTemplate="header">
+          <div class="feature-icon bg-gradient-neural w-16 h-16 rounded-full flex items-center justify-center mx-auto mt-4">
+            <i class="pi pi-download text-white text-2xl"></i>
+          </div>
+        </ng-template>
+        
+        <h3 class="feature-title text-xl font-bold text-white mb-3 text-center">
+          Exportación Avanzada
+        </h3>
+        <p class="feature-description text-neutral-300 mb-4 text-center">
+          Exporta datos en múltiples formatos (Excel, PDF, CSV) con análisis 
+          detallados y visualizaciones profesionales listas para presentar.
+        </p>
+        
+        <ng-template pTemplate="footer">
+          <div class="text-center">
+            <p-badge value="Multi-formato" severity="info"></p-badge>
+          </div>
+        </ng-template>
+      </p-card>
+
+      <!-- Feature 5: Role Management -->
+      <p-card styleClass="feature-card glass-bg border-glass-border">
+        <ng-template pTemplate="header">
+          <div class="feature-icon bg-gradient-accent w-16 h-16 rounded-full flex items-center justify-center mx-auto mt-4">
+            <i class="pi pi-users text-white text-2xl"></i>
+          </div>
+        </ng-template>
+        
+        <h3 class="feature-title text-xl font-bold text-white mb-3 text-center">
+          Gestión de Roles
+        </h3>
+        <p class="feature-description text-neutral-300 mb-4 text-center">
+          Sistema robusto de permisos: administradores con acceso completo y 
+          usuarios con vistas específicas según sus necesidades y nivel de acceso.
+        </p>
+        
+        <ng-template pTemplate="footer">
+          <div class="text-center">
+            <p-badge value="Seguro" severity="warn"></p-badge>
+          </div>
+        </ng-template>
+      </p-card>
+
+      <!-- Feature 6: Secure Architecture -->
+      <p-card styleClass="feature-card glass-bg border-glass-border">
+        <ng-template pTemplate="header">
+          <div class="feature-icon bg-gradient-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mt-4">
+            <i class="pi pi-shield text-white text-2xl"></i>
+          </div>
+        </ng-template>
+        
+        <h3 class="feature-title text-xl font-bold text-white mb-3 text-center">
+          Arquitectura Segura
+        </h3>
+        <p class="feature-description text-neutral-300 mb-4 text-center">
+          Construido con las mejores prácticas: arquitectura limpia, tokens httpOnly, 
+          y patrones de diseño enterprise para máxima seguridad y escalabilidad.
+        </p>
+        
+        <ng-template pTemplate="footer">
+          <div class="text-center">
+            <p-badge value="Enterprise" severity="success"></p-badge>
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
+  </div>
+</section>
+
+<!-- AI Showcase Section -->
+<section class="ai-showcase-section py-20 relative overflow-hidden">
+  <!-- Background Effects -->
+  <div class="ai-bg-grid absolute inset-0 opacity-10"></div>
+  
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- AI Visual -->
+      <div class="ai-visual-container">
+        <p-card styleClass="ai-visual-card glass-bg border-glass-border p-8">
+          <div class="ai-brain-container relative text-center">
+            <div class="ai-brain neural-pulse mb-6">
+              <i class="pi pi-brain text-6xl text-gradient-neural"></i>
+              <div class="ai-connections">
+                <div class="connection-line line-1"></div>
+                <div class="connection-line line-2"></div>
+                <div class="connection-line line-3"></div>
+                <div class="connection-line line-4"></div>
+              </div>
+            </div>
+            <div class="ai-data-points space-y-3">
+              <div class="data-point flex items-center justify-between">
+                <span class="text-neutral-300">Positivo:</span>
+                <p-badge value="87%" severity="success"></p-badge>
+              </div>
+              <div class="data-point flex items-center justify-between">
+                <span class="text-neutral-300">Negativo:</span>
+                <p-badge value="13%" severity="danger"></p-badge>
+              </div>
+              <div class="data-point flex items-center justify-between">
+                <span class="text-neutral-300">Neutro:</span>
+                <p-badge value="0%" severity="secondary"></p-badge>
+              </div>
+            </div>
+          </div>
+        </p-card>
+      </div>
+
+      <!-- AI Content -->
+      <div class="ai-content">
+        <div class="ai-badge mb-6">
+          <p-badge 
+            value="Inteligencia Artificial Avanzada" 
+            severity="info"
+            styleClass="badge-ai-powered text-sm px-4 py-2">
+            <i class="pi pi-cog text-sm mr-2 animate-spin"></i>
+          </p-badge>
+        </div>
+
+        <h2 class="ai-title text-3xl sm:text-4xl font-bold mb-6">
+          <span class="text-white">Análisis Inteligente de</span>
+          <span class="text-gradient-accent block">Sentimientos y Emociones</span>
+        </h2>
+
+        <p class="ai-description text-lg text-neutral-300 mb-8 leading-relaxed">
+          Nuestro modelo de IA preentrenado analiza cada comentario y respuesta 
+          para determinar automáticamente si el feedback es positivo o negativo, 
+          proporcionando insights valiosos sobre la percepción de tus productos y servicios.
+        </p>
+
+        <div class="ai-features space-y-4 mb-8">
+          <div class="ai-feature-item flex items-center">
+            <div class="feature-check mr-3">
+              <i class="pi pi-check text-accent-color text-lg"></i>
+            </div>
+            <span class="text-neutral-200">Procesamiento de lenguaje natural avanzado</span>
+          </div>
+          <div class="ai-feature-item flex items-center">
+            <div class="feature-check mr-3">
+              <i class="pi pi-check text-accent-color text-lg"></i>
+            </div>
+            <span class="text-neutral-200">Análisis de sentimientos en tiempo real</span>
+          </div>
+          <div class="ai-feature-item flex items-center">
+            <div class="feature-check mr-3">
+              <i class="pi pi-check text-accent-color text-lg"></i>
+            </div>
+            <span class="text-neutral-200">Clasificación automática de feedback</span>
+          </div>
+          <div class="ai-feature-item flex items-center">
+            <div class="feature-check mr-3">
+              <i class="pi pi-check text-accent-color text-lg"></i>
+            </div>
+            <span class="text-neutral-200">Insights accionables para la toma de decisiones</span>
+          </div>
+        </div>
+
+        <p-button 
+          label="Explorar IA" 
+          severity="info"
+          size="large"
+          icon="pi pi-search"
+          styleClass="btn-ai-explore px-6 py-3"
+          [rounded]="true"
+          (onClick)="onExploreAI()">
+        </p-button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Technology Stack Section -->
+<section class="tech-section py-20 relative">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+    <!-- Section Header -->
+    <div class="section-header text-center mb-16">
+      <h2 class="section-title text-3xl sm:text-4xl font-bold mb-6">
+        <span class="text-white">Tecnología de</span>
+        <span class="text-gradient-accent"> Vanguardia</span>
+      </h2>
+      <p class="section-description text-lg text-neutral-300 max-w-2xl mx-auto">
+        Construido con las tecnologías más modernas y robustas del mercado 
+        para garantizar rendimiento, seguridad y escalabilidad.
+      </p>
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="tech-grid grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Frontend -->
+      <p-card styleClass="tech-category glass-bg border-glass-border">
+        <ng-template pTemplate="header">
+          <div class="tech-header p-4 border-b border-glass-border-secondary">
+            <div class="tech-icon bg-gradient-accent w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+              <i class="pi pi-desktop text-white text-xl"></i>
+            </div>
+            <h3 class="tech-title text-xl font-bold text-white text-center">Frontend</h3>
+          </div>
+        </ng-template>
+        
+        <div class="tech-items space-y-3 p-4">
+          <div class="tech-item flex items-center justify-between">
+            <span class="tech-name text-neutral-200">Angular 19</span>
+            <p-badge value="Framework" severity="info"></p-badge>
+          </div>
+          <div class="tech-item flex items-center justify-between">
+            <span class="tech-name text-neutral-200">TypeScript</span>
+            <p-badge value="Language" severity="warn"></p-badge>
+          </div>
+          <div class="tech-item flex items-center justify-between">
+            <span class="tech-name text-neutral-200">PrimeNG</span>
+            <p-badge value="UI Library" severity="success"></p-badge>
+          </div>
+          <div class="tech-item flex items-center justify-between">
+            <span class="tech-name text-neutral-200">Tailwind CSS</span>
+            <p-badge value="Styling" severity="info"></p-badge>
+          </div>
+        </div>
+      </p-card>
+
+      <!-- Backend -->
+      <p-card styleClass="tech-category glass-bg border-glass-border">
+        <ng-template pTemplate="header">
+          <div class="tech-header p-4 border-b border-glass-border-secondary">
+            <div class="tech-icon bg-gradient-primary w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+              <i class="pi pi-server text-white text-xl"></i>
+            </div>
+            <h3 class="tech-title text-xl font-bold text-white text-center">Backend</h3>
+          </div>
+        </ng-template>
+        
+        <div class="tech-items space-y-3 p-4">
+          <div class="tech-item flex items-center justify-between">
+            <span class="tech-name text-neutral-200">.NET Core</span>
+            <p-badge value="Framework" severity="info"></p-badge>
+          </div>
+          <div class="tech-item flex items-center justify-between">
+            <span class="tech-name text-neutral-200">Entity Framework</span>
+            <p-badge value="ORM" severity="warn"></p-badge>
+          </div>
+          <div class="tech-item flex items-center justify-between">
+            <span class="tech-name text-neutral-200">Identity</span>
+            <p-badge value="Auth" severity="success"></p-badge>
+          </div>
+          <div class="tech-item flex items-center justify-between">
+            <span class="tech-name text-neutral-200">CQRS + Mediator</span>
+            <p-badge value="Pattern" severity="info"></p-badge>
+          </div>
+          <div class="tech-item flex items-center justify-between">
+            <span class="tech-name text-neutral-200">Clean Architecture</span>
+            <p-badge value="Pattern" severity="success"></p-badge>
+          </div>
+          <div class="tech-item flex items-center justify-between">
+            <span class="tech-name text-neutral-200">HttpOnly Tokens</span>
+            <p-badge value="Security" severity="info"></p-badge>
+          </div>
+        </div>
+      </p-card>
+
+      <!-- Database & AI -->
+      <p-card styleClass="tech-category glass-bg border-glass-border">
+        <ng-template pTemplate="header">
+          <div class="tech-header p-4 border-b border-glass-border-secondary">
+            <div class="tech-icon bg-gradient-neural w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+              <i class="pi pi-database text-white text-xl"></i>
+            </div>
+            <h3 class="tech-title text-xl font-bold text-white text-center">Base de Datos & IA</h3>
+          </div>
+        </ng-template>
+        
+        <div class="tech-items space-y-3 p-4">
+          <div class="tech-item flex items-center justify-between">
+            <span class="tech-name text-neutral-200">SQL Server</span>
+            <p-badge value="Database" severity="info"></p-badge>
+          </div>
+          <div class="tech-item flex items-center justify-between">
+            <span class="tech-name text-neutral-200">Machine Learning</span>
+            <p-badge value="AI/ML" severity="warn"></p-badge>
+          </div>
+          <div class="tech-item flex items-center justify-between">
+            <span class="tech-name text-neutral-200">NLP Models</span>
+            <p-badge value="AI/ML" severity="warn"></p-badge>
+          </div>
+          <div class="tech-item flex items-center justify-between">
+            <span class="tech-name text-neutral-200">Sentiment Analysis</span>
+            <p-badge value="AI Core" severity="success"></p-badge>
+          </div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section py-20 relative">
+  <div class="cta-bg-effects absolute inset-0">
+    <div class="cta-gradient"></div>
+    <div class="cta-particles"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl relative z-10">
+    <p-card styleClass="cta-content glass-bg border-glass-border text-center p-8">
+      <div class="cta-badge mb-6">
+        <p-badge 
+          value="¡Comienza tu Transformación Digital!" 
+          severity="info"
+          styleClass="badge-ai-powered text-sm px-4 py-2">
+          <i class="pi pi-star text-sm mr-2"></i>
+        </p-badge>
+      </div>
+
+      <h2 class="cta-title text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+        <span class="text-white">¿Listo para revolucionar</span>
+        <span class="text-gradient-accent block">tus análisis de feedback?</span>
+      </h2>
+
+      <p class="cta-description text-lg text-neutral-300 mb-8 max-w-2xl mx-auto">
+        Únete a la nueva era del análisis inteligente. Crea tu cuenta y 
+        descubre el poder de la IA aplicada a tus encuestas.
+      </p>
+
+      <div class="cta-actions flex flex-col sm:flex-row gap-4 justify-center mb-6">
+        <p-button 
+          label="Crear Cuenta Gratuita" 
+          severity="info"
+          size="large"
+          icon="pi pi-user-plus"
+          styleClass="btn-cta-primary px-8 py-3 text-lg font-semibold"
+          [rounded]="true"
+          (onClick)="onCreateAccount()">
+        </p-button>
+        
+        <p-button 
+          label="Contactar Ventas" 
+          severity="secondary"
+          size="large"
+          icon="pi pi-phone"
+          styleClass="btn-cta-secondary px-8 py-3 text-lg font-semibold"
+          [outlined]="true"
+          [rounded]="true"
+          (onClick)="onContactSales()">
+        </p-button>
+      </div>
+
+      <div class="cta-note">
+        <p class="text-sm text-neutral-400">
+          <i class="pi pi-shield text-accent-color mr-1"></i>
+          Sin compromiso • Configuración en minutos • Soporte 24/7
+        </p>
+      </div>
+    </p-card>
+  </div>
+</section>

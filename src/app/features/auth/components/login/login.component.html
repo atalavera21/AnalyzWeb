@@ -1,0 +1,151 @@
+<div class="auth-page-container">
+  <!-- Background Effects -->
+  <div class="auth-bg-effects">
+    <div class="neural-grid-auth"></div>
+    <div class="floating-particles-auth"></div>
+    <div class="ai-glow-orb-auth orb-1"></div>
+    <div class="ai-glow-orb-auth orb-2"></div>
+  </div>
+
+  <!-- Auth Card Container -->
+  <div class="auth-card-container">
+    <div class="auth-card-glass">
+      <!-- Header -->
+      <div class="auth-header">
+        <div class="auth-brand mb-6">
+          <div class="flex items-center justify-center space-x-3">
+            <div
+              class="logo-glow w-12 h-12 ai-shimmer rounded-xl flex items-center justify-center"
+            >
+              <i class="pi pi-chart-bar text-white text-lg relative z-10"></i>
+            </div>
+            <span class="brand-text text-2xl font-bold">SurveyAI</span>
+          </div>
+        </div>
+
+        <div class="text-center mb-8">
+          <h1 class="auth-title text-3xl font-bold text-white mb-2">
+            Iniciar Sesión
+          </h1>
+          <p class="auth-subtitle text-neutral-300">
+            Accede a tu cuenta para continuar
+          </p>
+        </div>
+      </div>
+
+      <!-- Login Form -->
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="auth-form">
+        <!-- Email Field -->
+        <div class="form-field mb-6">
+          <span class="p-input-icon-left w-full">
+            <label for="email" class="form-label block mb-2">EMAIL</label>
+            <i class="pi pi-envelope"></i>
+            <input
+              pInputText
+              id="email"
+              formControlName="email"
+              placeholder="tu@email.com"
+              class="w-full auth-input-field"
+              [class.ng-invalid]="f['email'].invalid && f['email'].touched"
+              (focus)="clearErrors()"
+            />
+          </span>
+          <small
+            *ngIf="f['email'].invalid && f['email'].touched"
+            class="p-error block mt-1"
+          >
+            <span *ngIf="f['email'].errors?.['required']"
+              >El email es requerido</span
+            >
+            <span *ngIf="f['email'].errors?.['email']"
+              >Ingresa un email válido</span
+            >
+          </small>
+        </div>
+
+        <!-- Password Field -->
+        <div class="form-field mb-6">
+          <label for="password" class="form-label block mb-2">CONTRASEÑA</label>
+          <span class="p-input-icon-left w-full">
+            <i class="pi pi-lock"></i>
+            <p-password
+              id="password"
+              formControlName="password"
+              placeholder="••••••••"
+              styleClass="w-full"
+              inputStyleClass="w-full auth-input-field"              
+              [feedback]="false"
+              [toggleMask]="true"
+              (onFocus)="clearErrors()"
+            ></p-password>
+          </span>
+          <small
+            *ngIf="f['password'].invalid && f['password'].touched"
+            class="p-error block mt-1"
+          >
+            <span *ngIf="f['password'].errors?.['required']"
+              >La contraseña es requerida</span
+            >
+            <span *ngIf="f['password'].errors?.['minlength']"
+              >Mínimo 6 caracteres</span
+            >
+          </small>
+        </div>
+
+        <!-- Error Message for regular login -->
+        <p-message
+          *ngIf="error"
+          severity="error"
+          [text]="error"
+          styleClass="w-full mb-4"
+        ></p-message>
+
+        <!-- Login Tradicional -->
+        <p-button
+          type="submit"
+          [label]="loading ? 'Iniciando sesión...' : 'Iniciar Sesión'"
+          icon="pi pi-sign-in"
+          styleClass="w-full auth-submit-button"
+          [loading]="loading"
+          [disabled]="loading || loginForm.invalid"
+        ></p-button>
+
+        <!-- Login con Google -->
+        <p-button
+          type="button"
+          label="Continuar con Google"
+          icon="pi pi-google"
+          styleClass="w-full mt-4 p-button-outlined p-button-secondary"
+          [disabled]="loading"
+          (click)="loginWithGoogle()"
+        ></p-button>
+
+      </form>
+
+      <!-- Footer Links -->
+      <div class="auth-footer mt-8">
+        <div class="auth-divider my-6">
+          <span class="divider-text">o</span>
+        </div>
+
+        <div class="auth-links text-center space-y-3">
+          <p class="text-neutral-300 text-sm">
+            ¿No tienes cuenta?
+            <a routerLink="/auth/register" class="auth-link font-medium ml-1">
+              Regístrate aquí
+            </a>
+          </p>
+          <p>
+            <a
+              routerLink="/"
+              class="auth-link-secondary text-sm flex items-center justify-center"
+            >
+              <i class="pi pi-arrow-left mr-2"></i>
+              Volver al inicio
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

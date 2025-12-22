@@ -1,0 +1,72 @@
+<div class="auth-page-container">
+      <div class="auth-bg-effects">
+        <div class="neural-grid-auth"></div>
+        <div class="floating-particles-auth"></div>
+        <div class="ai-glow-orb-auth orb-1"></div>
+        <div class="ai-glow-orb-auth orb-2"></div>
+      </div>
+
+      <div class="auth-card-container">
+        <div class="auth-card-glass">
+          <div class="auth-header">
+            <div class="text-center mb-8">
+              <div class="mb-4">
+                <i class="pi pi-shield text-5xl text-blue-400"></i>
+              </div>
+              <h1 class="auth-title text-3xl font-bold text-white mb-2">
+                Verificación de Seguridad
+              </h1>
+              <p class="auth-subtitle text-neutral-300">
+                Ingresa el código de 6 dígitos de tu aplicación autenticadora
+              </p>
+            </div>
+          </div>
+
+          <form [formGroup]="verifyForm" (ngSubmit)="onVerify()" class="auth-form">
+            <div class="form-field mb-6">
+              <label for="code" class="form-label block mb-2 text-center">CÓDIGO 2FA</label>
+              <input
+                pInputText
+                id="code"
+                formControlName="code"
+                placeholder="000000"
+                class="w-full auth-input-field text-center text-2xl tracking-widest"
+                maxlength="6"
+                [class.ng-invalid]="f['code'].invalid && f['code'].touched"
+                (input)="onCodeInput($event)"
+                autofocus
+              />
+              <small *ngIf="f['code'].invalid && f['code'].touched" class="p-error block mt-1 text-center">
+                Ingresa un código de 6 dígitos
+              </small>
+            </div>
+
+            <p-message
+              *ngIf="error"
+              severity="error"
+              [text]="error"
+              styleClass="w-full mb-4"
+            ></p-message>
+
+            <p-button
+              type="submit"
+              [label]="loading ? 'Verificando...' : 'Verificar'"
+              icon="pi pi-check"
+              styleClass="w-full auth-submit-button"
+              [loading]="loading"
+              [disabled]="loading || verifyForm.invalid"
+            ></p-button>
+
+            <div class="mt-6 text-center">
+              <button 
+                type="button"
+                class="text-neutral-400 hover:text-white text-sm"
+                (click)="useBackupCode = !useBackupCode"
+              >
+                {{ useBackupCode ? 'Usar código de autenticación' : '¿Perdiste tu dispositivo? Usa código de respaldo' }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
