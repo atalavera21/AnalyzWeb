@@ -21,17 +21,11 @@ jobs:
           lfs: false
 
       # Generar archivo environment.ts para producción
+      # Generar archivo environment.ts con valores de producción
       - name: Create environment files
         run: |
-          mkdir -p src/environments
-          cat > src/environments/environment.ts << EOF
-          export const environment = {
-            production: false,
-            apiUrl: '${{ secrets.API_URL }}',
-            googleClientId: '${{ secrets.GOOGLE_CLIENT_ID }}'
-          };
-          EOF
-          cat > src/environments/environment.prod.ts << EOF
+          mkdir -p src/app/environments
+          cat > src/app/environments/environment.ts << EOF
           export const environment = {
             production: true,
             apiUrl: '${{ secrets.API_URL }}',
@@ -61,5 +55,6 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_THANKFUL_OCEAN_07FE12D0F }}
           action: "close"
+
 
 
