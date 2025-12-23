@@ -10,6 +10,10 @@ export const authRoutes: Routes = [
     component: LoginComponent
   },
   {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
     path: 'callback',
     component: GoogleCallbackComponent
   },
