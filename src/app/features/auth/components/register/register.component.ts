@@ -8,7 +8,11 @@ import {
 } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../../core/services/auth.service';
-import { RegisterRequest, Gender, GenderOption } from '../../../../core/models/user.model';
+import {
+  RegisterRequest,
+  Gender,
+  GenderOption,
+} from '../../../../core/models/user.model';
 import { FormsModule } from '@angular/forms';
 
 // PrimeNG Imports
@@ -24,8 +28,8 @@ import { DatePickerModule } from 'primeng/datepicker';
   selector: 'app-register',
   standalone: true,
   imports: [
-    CommonModule, 
-    ReactiveFormsModule, 
+    CommonModule,
+    ReactiveFormsModule,
     RouterModule,
     InputTextModule,
     PasswordModule,
@@ -34,7 +38,7 @@ import { DatePickerModule } from 'primeng/datepicker';
     CalendarModule,
     RadioButtonModule,
     DatePickerModule,
-    FormsModule
+    FormsModule,
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
@@ -52,7 +56,7 @@ export class RegisterComponent implements OnInit {
   genderOptions: GenderOption[] = [
     { label: 'Masculino', value: Gender.MALE },
     { label: 'Femenino', value: Gender.FEMALE },
-    { label: 'Otro', value: Gender.OTHER }
+    { label: 'Otro', value: Gender.OTHER },
   ];
 
   date = new Date();
@@ -77,20 +81,52 @@ export class RegisterComponent implements OnInit {
     this.minDate.setDate(this.minDate.getDate() - 10);
     this.maxDate.setDate(this.maxDate.getDate() + 10);
 
-    this.initializeForm();   
+    this.initializeForm();
   }
 
   private initializeForm(): void {
-    this.registerForm = this.formBuilder.group({
-      firstName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-      lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-      username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern(/^[a-zA-Z0-9._]+$/)]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8), this.passwordValidator]],
-      confirmPassword: ['', [Validators.required]],
-      dateofBirth: [null, [Validators.required]],
-      gender: ['', [Validators.required]]
-    }, { validators: this.passwordMatchValidator });
+    this.registerForm = this.formBuilder.group(
+      {
+        firstName: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(2),
+            Validators.maxLength(50),
+          ],
+        ],
+        lastName: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(2),
+            Validators.maxLength(50),
+          ],
+        ],
+        username: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(3),
+            Validators.maxLength(20),
+            Validators.pattern(/^[a-zA-Z0-9._]+$/),
+          ],
+        ],
+        email: ['', [Validators.required, Validators.email]],
+        password: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(8),
+            this.passwordValidator,
+          ],
+        ],
+        confirmPassword: ['', [Validators.required]],
+        dateofBirth: [null, [Validators.required]],
+        gender: ['', [Validators.required]],
+      },
+      { validators: this.passwordMatchValidator }
+    );
   }
 
   // Validador personalizado para contraseña segura
@@ -103,9 +139,9 @@ export class RegisterComponent implements OnInit {
     const hasNumber = /[0-9]/.test(value);
     const hasUpper = /[A-Z]/.test(value);
     const hasLower = /[a-z]/.test(value);
-    
+
     const valid = hasNumber && hasUpper && hasLower;
-    
+
     if (!valid) {
       return { weakPassword: true };
     }
@@ -116,8 +152,12 @@ export class RegisterComponent implements OnInit {
   private passwordMatchValidator(form: FormGroup) {
     const password = form.get('password');
     const confirmPassword = form.get('confirmPassword');
-    
-    if (password && confirmPassword && password.value !== confirmPassword.value) {
+
+    if (
+      password &&
+      confirmPassword &&
+      password.value !== confirmPassword.value
+    ) {
       confirmPassword.setErrors({ passwordMismatch: true });
     } else if (confirmPassword?.hasError('passwordMismatch')) {
       delete confirmPassword.errors!['passwordMismatch'];
@@ -134,8 +174,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(): void {
     if (this.registerForm.invalid) {
-      // Marcar todos los campos como tocados para mostrar errores
-      Object.keys(this.registerForm.controls).forEach(key => {
+      Object.keys(this.registerForm.controls).forEach((key) => {
         this.registerForm.get(key)?.markAsTouched();
       });
       return;
@@ -144,7 +183,6 @@ export class RegisterComponent implements OnInit {
     this.loading = true;
     this.error = '';
 
-    // Preparar datos para el API
     const formData = this.registerForm.value;
     const registerData: RegisterRequest = {
       email: formData.email,
@@ -153,27 +191,43 @@ export class RegisterComponent implements OnInit {
       lastName: formData.lastName,
       username: formData.username,
       dateofBirth: this.formatDate(formData.dateofBirth),
-      gender: formData.gender
+      gender: formData.gender,
     };
 
     this.authService.register(registerData).subscribe({
       next: (response) => {
-        this.loading = false;
+        console.log('✅ Registro exitoso:', response);
         this.success = true;
-        
-        // Mostrar mensaje de éxito por unos segundos y luego redirigir al login
-        setTimeout(() => {
-          this.router.navigate(['/auth/login'], { 
-            queryParams: { registered: 'true' } 
+
+        // ✅ Login automático con las credenciales recién creadas
+        this.authService
+          .login({
+            email: formData.email,
+            password: formData.password,
+          })
+          .subscribe({
+            next: (loginResponse) => {
+              console.log('✅ Login automático exitoso');
+              this.loading = false;
+              // El AuthService ya redirige al dashboard según el rol
+            },
+            error: (loginError) => {
+              console.error('Error en login automático:', loginError);
+              this.loading = false;
+              // Si falla el login automático, redirigir al login manual
+              this.router.navigate(['/auth/login'], {
+                queryParams: { registered: 'true' },
+              });
+            },
           });
-        }, 2000);
       },
       error: (error) => {
+        console.error('❌ Error en registro:', error);
         this.loading = false;
-        
-        // Manejar diferentes tipos de errores
+
         if (error.status === 400) {
-          this.error = 'Los datos proporcionados no son válidos. Verifica la información.';
+          this.error =
+            'Los datos proporcionados no son válidos. Verifica la información.';
         } else if (error.status === 409) {
           this.error = 'El email o nombre de usuario ya están registrados.';
         } else if (error.error?.message) {
