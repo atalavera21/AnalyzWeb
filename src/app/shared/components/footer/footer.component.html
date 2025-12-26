@@ -1,81 +1,102 @@
-<footer class="footer-professional">
-  <!-- Main Footer Content -->
-  <div class="footer-content py-16">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-        
-        <!-- Brand Section -->
-        <div class="footer-brand">
-          <div class="flex items-center space-x-3 mb-6">
-            <div class="logo-simple w-8 h-8 rounded-lg flex items-center justify-center">
-              <i class="pi pi-chart-bar text-white text-lg"></i>
+<footer class="footer-elegant">
+  <!-- Decorative top line -->
+  <div class="footer-glow-line"></div>
+  
+  <div class="footer-content">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Mobile Layout -->
+      <div class="footer-mobile md:hidden py-6">
+        <!-- Links con separadores elegantes -->
+        <nav class="flex items-center justify-center gap-2 mb-5">
+          <a href="#" class="footer-link-elegant">Producto</a>
+          <span class="separator"></span>
+          <a href="#" class="footer-link-elegant">Precios</a>
+          <span class="separator"></span>
+          <a href="#" class="footer-link-elegant">Docs</a>
+          <span class="separator"></span>
+          <a href="#" class="footer-link-elegant">Contacto</a>
+        </nav>
+
+        <!-- Bottom info -->
+        <div class="flex items-center justify-center gap-6 text-xs">
+          <span class="text-gray-600">© {{ currentYear }} SurveyAI</span>
+          <div class="flex items-center gap-3">
+            <a href="#" class="text-gray-500 hover:text-orange-400 transition-colors">Privacidad</a>
+            <a href="#" class="text-gray-500 hover:text-orange-400 transition-colors">Términos</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desktop Layout -->
+      <div class="footer-desktop hidden md:block py-12">
+        <div class="grid grid-cols-12 gap-8">
+          
+          <!-- Left: Info -->
+          <div class="col-span-4">
+            <p class="text-gray-400 text-sm leading-relaxed mb-4 max-w-xs">
+              Plataforma de análisis inteligente de feedback impulsada por IA.
+            </p>
+            <div class="flex items-center gap-4">
+              <a href="#" class="social-icon" aria-label="Twitter">
+                <i class="pi pi-twitter"></i>
+              </a>
+              <a href="#" class="social-icon" aria-label="LinkedIn">
+                <i class="pi pi-linkedin"></i>
+              </a>
+              <a href="#" class="social-icon" aria-label="GitHub">
+                <i class="pi pi-github"></i>
+              </a>
             </div>
-            <span class="text-white text-xl font-semibold">SurveyAI</span>
           </div>
-          <p class="text-gray-400 text-sm leading-relaxed max-w-xs">
-            Análisis inteligente de feedback con tecnología de vanguardia.
-          </p>
-        </div>
 
-        <!-- Product -->
-        <div class="footer-section">
-          <h3 class="footer-title">Producto</h3>
-          <ul class="footer-links">
-            <li><a href="#" class="footer-link">Características</a></li>
-            <li><a href="#" class="footer-link">Precios</a></li>
-            <li><a href="#" class="footer-link">API</a></li>
-            <li><a href="#" class="footer-link">Integraciones</a></li>
-          </ul>
-        </div>
-
-        <!-- Empresa -->
-        <div class="footer-section">
-          <h3 class="footer-title">Empresa</h3>
-          <ul class="footer-links">
-            <li><a href="#" class="footer-link">Acerca de</a></li>
-            <li><a href="#" class="footer-link">Blog</a></li>
-            <li><a href="#" class="footer-link">Contacto</a></li>
-            <li><a href="#" class="footer-link">Carreras</a></li>
-          </ul>
-        </div>
-
-        <!-- Soporte -->
-        <div class="footer-section">
-          <h3 class="footer-title">Soporte</h3>
-          <ul class="footer-links">
-            <li><a href="#" class="footer-link">Centro de Ayuda</a></li>
-            <li><a href="#" class="footer-link">Documentación</a></li>
-            <li><a href="#" class="footer-link">Estado del Sistema</a></li>
-            <li><a href="#" class="footer-link">Seguridad</a></li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- Bottom Bar -->
-  <div class="footer-bottom">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-6">
-      <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-        
-        <div class="footer-left flex items-center space-x-6">
-          <span class="text-gray-500 text-sm">© {{ currentYear }} SurveyAI. Todos los derechos reservados.</span>
-        </div>
-
-        <div class="footer-center">
-          <span class="text-gray-400 text-sm">Creado por <span class="text-orange-400 font-medium">Adrián Talavera</span></span>
-        </div>
-
-        <div class="footer-right flex items-center space-x-8">
-          <div class="footer-legal flex items-center space-x-4">
-            <a href="#" class="text-gray-500 hover:text-orange-400 text-sm transition-colors">Privacidad</a>
-            <a href="#" class="text-gray-500 hover:text-orange-400 text-sm transition-colors">Términos</a>
+          <!-- Center & Right: Links -->
+          <div class="col-span-8">
+            <div class="flex justify-end gap-16">
+              <div>
+                <h3 class="footer-heading">Producto</h3>
+                <ul class="footer-list">
+                  <li><a href="#">Características</a></li>
+                  <li><a href="#">Precios</a></li>
+                  <li><a href="#">Integraciones</a></li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="footer-heading">Recursos</h3>
+                <ul class="footer-list">
+                  <li><a href="#">Documentación</a></li>
+                  <li><a href="#">API</a></li>
+                  <li><a href="#">Estado</a></li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="footer-heading">Empresa</h3>
+                <ul class="footer-list">
+                  <li><a href="#">Acerca de</a></li>
+                  <li><a href="#">Blog</a></li>
+                  <li><a href="#">Contacto</a></li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <p-badge value="Angular + .NET" severity="secondary" styleClass="tech-badge-minimal"></p-badge>
+
         </div>
 
+        <!-- Desktop Bottom -->
+        <div class="footer-bottom-desktop mt-10 pt-6 border-t border-white/5">
+          <div class="flex items-center justify-between">
+            <span class="text-gray-600 text-xs">© {{ currentYear }} SurveyAI. Todos los derechos reservados.</span>
+            <div class="flex items-center gap-6 text-xs">
+              <a href="#" class="text-gray-500 hover:text-orange-400 transition-colors">Privacidad</a>
+              <a href="#" class="text-gray-500 hover:text-orange-400 transition-colors">Términos</a>
+              <span class="text-gray-600">
+                Hecho con <span class="text-orange-400">♥</span> por Adrián Talavera
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
 </footer>

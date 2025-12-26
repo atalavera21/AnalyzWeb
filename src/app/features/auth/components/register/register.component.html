@@ -135,27 +135,25 @@
             </div>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+          <div class="form-row-responsive mt-4">
             <!-- Date of Birth -->
             <div class="form-field w-full">
               <label
                 for="dateofBirth"
                 class="flex items-center gap-2 mb-2 text-sm font-bold text-white"
               >
-                <i style="color: #de6627;"class="pi pi-calendar"></i>
+                <i style="color: #de6627" class="pi pi-calendar"></i>
                 FECHA DE NACIMIENTO
               </label>
               <span class="p-input-icon-left w-full">
-                <p-datepicker 
-                [(ngModel)]="date" 
-                 id="dateofBirth"
+                <p-datepicker
+                  [(ngModel)]="date"
+                  id="dateofBirth"
                   formControlName="dateofBirth"
                   placeholder="Selecciona tu fecha"
                   inputStyleClass="w-full auth-input-field"
-                
                   [showIcon]="false"
                   dateFormat="dd/mm/yy"
-                
                 />
                 <!-- <p-calendar
                   id="dateofBirth"
@@ -179,11 +177,14 @@
                 ></p-calendar> -->
               </span>
             </div>
-
+           
             <!-- Gender - SECCIÓN CORREGIDA -->
             <div class="form-field w-full">
-              <label class="form-label block mb-2">
-                <i class="pi pi-users mr-2"></i>
+              <label
+                for="gender"
+                class="flex items-center gap-2 mb-2 text-sm font-bold text-white"
+              >
+                <i style="color: #de6627" class="pi pi-users"></i>
                 GÉNERO
               </label>
               <div class="gender-options-container">

@@ -8,15 +8,14 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  background: radial-gradient(ellipse at center, 
-    rgba(68, 125, 155, 0.08) 0%, 
-    rgba(26, 43, 54, 0.95) 50%, 
+  background: radial-gradient(
+    ellipse at center,
+    rgba(68, 125, 155, 0.08) 0%,
+    rgba(26, 43, 54, 0.95) 50%,
     rgba(16, 25, 31, 1) 100%
   );
   padding: 2rem 1rem;
 }
-
-
 
 /* Background Effects */
 .auth-bg-effects {
@@ -29,33 +28,51 @@
 .neural-grid-auth {
   position: absolute;
   inset: 0;
-  background-image: 
-    linear-gradient(rgba(231, 116, 49, 0.08) 1px, transparent 1px),
+  background-image: linear-gradient(
+      rgba(231, 116, 49, 0.08) 1px,
+      transparent 1px
+    ),
     linear-gradient(90deg, rgba(231, 116, 49, 0.08) 1px, transparent 1px);
   background-size: 60px 60px;
   animation: grid-move-auth 25s linear infinite;
 }
 
 @keyframes grid-move-auth {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(60px, 60px); }
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(60px, 60px);
+  }
 }
 
 .floating-particles-auth {
   position: absolute;
   inset: 0;
-  background-image: 
-    radial-gradient(2px 2px at 25px 35px, rgba(231, 116, 49, 0.3), transparent),
+  background-image: radial-gradient(
+      2px 2px at 25px 35px,
+      rgba(231, 116, 49, 0.3),
+      transparent
+    ),
     radial-gradient(1px 1px at 85px 45px, rgba(68, 125, 155, 0.3), transparent),
-    radial-gradient(1px 1px at 125px 85px, rgba(215, 215, 215, 0.4), transparent);
+    radial-gradient(
+      1px 1px at 125px 85px,
+      rgba(215, 215, 215, 0.4),
+      transparent
+    );
   background-repeat: repeat;
   background-size: 180px 180px;
   animation: particles-float-auth 18s ease-in-out infinite;
 }
 
 @keyframes particles-float-auth {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-15px) rotate(1deg); }
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(1deg);
+  }
 }
 
 .ai-glow-orb-auth {
@@ -68,7 +85,11 @@
 .orb-1 {
   width: 250px;
   height: 250px;
-  background: radial-gradient(circle, rgba(231, 116, 49, 0.15) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(231, 116, 49, 0.15) 0%,
+    transparent 70%
+  );
   top: 10%;
   left: 20%;
   animation-delay: 0s;
@@ -77,15 +98,24 @@
 .orb-2 {
   width: 180px;
   height: 180px;
-  background: radial-gradient(circle, rgba(68, 125, 155, 0.12) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(68, 125, 155, 0.12) 0%,
+    transparent 70%
+  );
   bottom: 20%;
   right: 25%;
   animation-delay: 3s;
 }
 
 @keyframes orb-float-auth {
-  0%, 100% { transform: translateY(0px) scale(1); }
-  50% { transform: translateY(-25px) scale(1.05); }
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-25px) scale(1.05);
+  }
 }
 
 /* ======================
@@ -106,23 +136,23 @@
   border: 1px solid rgba(231, 116, 49, 0.15);
   border-radius: 1.5rem;
   padding: 2rem 3rem;
-  box-shadow: 
-    0 20px 60px rgba(0, 0, 0, 0.3),
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
     0 0 0 1px rgba(255, 255, 255, 0.05) inset;
   position: relative;
   overflow: hidden;
 }
 
 .auth-card-glass::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    var(--accent-color) 50%, 
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--accent-color) 50%,
     transparent 100%
   );
   opacity: 0.6;
@@ -140,7 +170,7 @@
 }
 
 .auth-brand .logo-glow::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: -2px;
   background: var(--gradient-neural);
@@ -150,13 +180,18 @@
 }
 
 @keyframes rotate-gradient-auth {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .auth-brand .brand-text {
-  background: linear-gradient(135deg, 
-    var(--text-primary) 0%, 
+  background: linear-gradient(
+    135deg,
+    var(--text-primary) 0%,
     var(--accent-color) 100%
   );
   -webkit-background-clip: text;
@@ -223,38 +258,16 @@
 }
 
 .section-title::after {
-  content: '';
+  content: "";
   flex: 1;
   height: 1px;
-  background: linear-gradient(90deg, 
-    var(--accent-color) 0%, 
-    transparent 100%
-  );
+  background: linear-gradient(90deg, var(--accent-color) 0%, transparent 100%);
   margin-left: 1rem;
 }
 
 .section-title i {
   font-size: 1rem;
   margin-right: 0.5rem;
-}
-
-/* Grid Layout */
-@media (min-width: 768px) {
-  .grid {
-    display: grid;
-  }
-  
-  .grid-cols-1 {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-  }
-  
-  .md\:grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  
-  .gap-4 {
-    gap: 1rem;
-  }
 }
 
 /* ======================
@@ -321,7 +334,12 @@
   box-shadow: 0 0 0 4px rgba(231, 116, 49, 0.2) !important;
 }
 
-:host ::ng-deep .gender-radio .p-radiobutton .p-radiobutton-box .p-radiobutton-icon {
+:host
+  ::ng-deep
+  .gender-radio
+  .p-radiobutton
+  .p-radiobutton-box
+  .p-radiobutton-icon {
   width: 0.5rem !important;
   height: 0.5rem !important;
   background: white !important;
@@ -330,7 +348,12 @@
   transition: transform 0.2s ease !important;
 }
 
-:host ::ng-deep .gender-radio .p-radiobutton .p-radiobutton-box.p-highlight .p-radiobutton-icon {
+:host
+  ::ng-deep
+  .gender-radio
+  .p-radiobutton
+  .p-radiobutton-box.p-highlight
+  .p-radiobutton-icon {
   transform: scale(1) !important;
 }
 
@@ -355,7 +378,8 @@
 :host ::ng-deep .auth-input-field:focus {
   border-color: var(--accent-color) !important;
   background: rgba(255, 255, 255, 0.08) !important;
-  box-shadow: 0 0 0 4px rgba(231, 116, 49, 0.15), 0 4px 16px rgba(231, 116, 49, 0.2) !important;
+  box-shadow: 0 0 0 4px rgba(231, 116, 49, 0.15),
+    0 4px 16px rgba(231, 116, 49, 0.2) !important;
   transform: translateY(-1px) !important;
   outline: none !important;
 }
@@ -368,7 +392,8 @@
 :host ::ng-deep .auth-input-field.ng-invalid.ng-touched {
   border-color: #ef4444 !important;
   background: rgba(239, 68, 68, 0.05) !important;
-  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.15), 0 4px 16px rgba(239, 68, 68, 0.2) !important;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.15),
+    0 4px 16px rgba(239, 68, 68, 0.2) !important;
 }
 
 /* Input Icon Styling */
@@ -395,13 +420,14 @@
 :host ::ng-deep .p-password .p-password-input:focus {
   border-color: var(--accent-color) !important;
   background: rgba(255, 255, 255, 0.08) !important;
-  box-shadow: 0 0 0 4px rgba(231, 116, 49, 0.15), 0 4px 16px rgba(231, 116, 49, 0.2) !important;
+  box-shadow: 0 0 0 4px rgba(231, 116, 49, 0.15),
+    0 4px 16px rgba(231, 116, 49, 0.2) !important;
   transform: translateY(-1px) !important;
   outline: none !important;
 }
 
 :host ::ng-deep .p-password .p-password-toggle-mask {
-  color: #E77431 !important;
+  color: #e77431 !important;
   right: 1.25rem !important;
   font-size: 1.2rem !important;
   opacity: 0.9 !important;
@@ -410,7 +436,7 @@
 }
 
 :host ::ng-deep .p-password .p-password-toggle-mask:hover {
-  color: #F58220 !important;
+  color: #f58220 !important;
   opacity: 1 !important;
   transform: scale(1.1) !important;
 }
@@ -440,11 +466,19 @@
   background: #ef4444 !important;
 }
 
-:host ::ng-deep .p-password-panel .p-password-meter .p-password-strength.medium {
+:host
+  ::ng-deep
+  .p-password-panel
+  .p-password-meter
+  .p-password-strength.medium {
   background: #f59e0b !important;
 }
 
-:host ::ng-deep .p-password-panel .p-password-meter .p-password-strength.strong {
+:host
+  ::ng-deep
+  .p-password-panel
+  .p-password-meter
+  .p-password-strength.strong {
   background: #10b981 !important;
 }
 
@@ -475,7 +509,8 @@
 :host ::ng-deep .p-calendar .p-inputtext:focus {
   border-color: var(--accent-color) !important;
   background: rgba(255, 255, 255, 0.08) !important;
-  box-shadow: 0 0 0 4px rgba(231, 116, 49, 0.15), 0 4px 16px rgba(231, 116, 49, 0.2) !important;
+  box-shadow: 0 0 0 4px rgba(231, 116, 49, 0.15),
+    0 4px 16px rgba(231, 116, 49, 0.2) !important;
   transform: translateY(-1px) !important;
 }
 
@@ -644,8 +679,9 @@
 
 :host ::ng-deep .auth-submit-button:hover:not(.p-disabled) {
   transform: translateY(-3px) !important;
-  box-shadow: 0 12px 48px rgba(231, 116, 49, 0.5), 0 4px 16px rgba(0, 0, 0, 0.15) !important;
-  background: linear-gradient(135deg, #E77431 0%, #F58220 100%) !important;
+  box-shadow: 0 12px 48px rgba(231, 116, 49, 0.5),
+    0 4px 16px rgba(0, 0, 0, 0.15) !important;
+  background: linear-gradient(135deg, #e77431 0%, #f58220 100%) !important;
 }
 
 :host ::ng-deep .auth-submit-button:hover:not(.p-disabled) .p-button-icon {
@@ -710,15 +746,16 @@
 }
 
 .auth-divider::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba(255, 255, 255, 0.1) 50%, 
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
     transparent 100%
   );
 }
@@ -758,6 +795,14 @@
   color: var(--accent-color);
 }
 
+
+.form-row-responsive {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
 /* ======================
    RESPONSIVE DESIGN
    ====================== */
@@ -768,37 +813,69 @@
   }
 }
 
+@media (min-width: 769px) {
+  .grid.grid-cols-1.md\:grid-cols-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1rem !important;
+  }
+  
+  .form-row-responsive {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
+
+
 @media (max-width: 768px) {
   .auth-card-container {
     max-width: 95%;
   }
-  
+
   .auth-card-glass {
-    padding: 1.5rem 2rem;
+    padding: 1.5rem;
   }
-  
+
   .form-section {
     margin-bottom: 1.25rem;
     padding-bottom: 0.75rem;
   }
-  
+
   .section-title {
     font-size: 0.75rem;
     margin-bottom: 0.75rem;
   }
-  
-  .grid {
-    display: block !important;
+
+  /* GRIDS A 1 COLUMNA */
+  .grid.grid-cols-1.md\:grid-cols-2,
+  .form-row-responsive {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.25rem !important;
   }
-  
-  .grid > * {
-    margin-bottom: 1rem;
+
+  .grid.grid-cols-1.md\:grid-cols-2 > *,
+  .form-row-responsive > * {
+    width: 100% !important;
   }
-  
-  .grid > *:last-child {
-    margin-bottom: 0;
+
+  /* GÉNERO: Horizontal en tablet */
+  .gender-options-container {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.5rem !important;
   }
-  
+
+  .gender-option {
+    flex: 1 !important;
+    padding: 0.6rem 0.5rem !important;
+  }
+
+  .gender-label {
+    font-size: 0.8rem !important;
+  }
+
   /* Calendar responsive */
   :host ::ng-deep .p-datepicker {
     width: 90vw !important;
@@ -811,12 +888,12 @@
     flex-direction: column;
     gap: 0.75rem;
   }
-  
+
   .gender-option {
     justify-content: flex-start;
     text-align: left;
   }
-  
+
   .gender-label {
     text-align: left;
   }
@@ -826,58 +903,90 @@
   .auth-page-container {
     padding: 1rem 0.5rem;
   }
-  
+
   .auth-card-glass {
-    padding: 1.5rem 1rem;
+    padding: 1.25rem 1rem;
     border-radius: 1rem;
   }
-  
+
   .auth-title {
     font-size: 1.75rem;
   }
-  
+
   .auth-brand .logo-glow {
     width: 2.5rem;
     height: 2.5rem;
   }
-  
+
   .auth-brand .brand-text {
     font-size: 1.5rem;
   }
-  
+
+  /* Inputs más pequeños */
   :host ::ng-deep .auth-input-field,
   :host ::ng-deep .p-calendar .p-inputtext,
   :host ::ng-deep .auth-submit-button {
     height: 3rem !important;
     font-size: 0.9rem !important;
   }
-  
+
   :host ::ng-deep .auth-input-field,
   :host ::ng-deep .p-calendar .p-inputtext {
     padding: 0.75rem 0.75rem 0.75rem 2.25rem !important;
   }
-  
+
   :host ::ng-deep .p-input-icon-left i {
     left: 0.75rem !important;
     font-size: 1rem !important;
   }
-  
+
   :host ::ng-deep .auth-submit-button {
     gap: 0.5rem !important;
     padding: 0.75rem 1.5rem !important;
   }
-  
-  /* Calendar mobile adjustments */
+
+  /* Calendar más pequeño */
   :host ::ng-deep .p-datepicker {
     width: 95vw !important;
     max-width: 320px !important;
-    font-size: 0.875rem !important;
   }
-  
+
   :host ::ng-deep .p-datepicker table td > span {
     width: 2rem !important;
     height: 2rem !important;
     font-size: 0.75rem !important;
+  }
+
+  /* GÉNERO: Vertical en móvil pequeño */
+  .gender-options-container {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+
+  .gender-option {
+    width: 100% !important;
+    justify-content: flex-start !important;
+    padding: 0.75rem 1rem !important;
+  }
+
+  .gender-label {
+    font-size: 0.85rem !important;
+    text-align: left !important;
+  }
+}
+
+
+@media (max-width: 380px) {
+  .gender-options-container {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+  
+  .gender-option {
+    flex: none !important;
+    width: 100% !important;
+    justify-content: flex-start !important;
+    padding: 0.75rem 1rem !important;
   }
 }
 
@@ -892,11 +1001,11 @@
   .rotate-gradient-auth {
     animation: none;
   }
-  
+
   :host ::ng-deep .auth-submit-button:hover:not(.p-disabled) .p-button-icon {
     transform: none !important;
   }
-  
+
   .success-slide-in {
     animation: none !important;
   }
@@ -907,22 +1016,22 @@
     background: var(--primary-color);
     border: 2px solid var(--accent-color);
   }
-  
+
   .section-title {
     color: #ff8a00 !important;
   }
-  
+
   :host ::ng-deep .auth-input-field,
   :host ::ng-deep .p-calendar .p-inputtext {
     background: var(--primary-color) !important;
     border: 2px solid var(--neutral-color) !important;
   }
-  
+
   :host ::ng-deep .auth-input-field:focus,
   :host ::ng-deep .p-calendar .p-inputtext:focus {
     border-color: #ff8a00 !important;
   }
-  
+
   :host ::ng-deep .p-datepicker {
     background: var(--primary-color) !important;
     border: 2px solid var(--accent-color) !important;
