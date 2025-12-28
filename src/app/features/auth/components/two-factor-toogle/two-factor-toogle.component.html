@@ -47,6 +47,7 @@
   [style]="{ width: '550px' }"
   [closable]="!loading"
   [closeOnEscape]="!loading"
+  appendTo="body"
 >
   <div class="space-y-6">
     <!-- Paso 1: Escanear QR -->
@@ -179,6 +180,7 @@
   [(visible)]="showDisableDialog"
   [modal]="true"
   [style]="{ width: '450px' }"
+  appendTo="body"
 >
   <div class="mb-4">
     <p class="text-gray-700 mb-2">
