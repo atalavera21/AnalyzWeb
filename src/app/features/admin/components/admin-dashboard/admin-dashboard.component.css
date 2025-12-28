@@ -1,0 +1,33 @@
+/* Estilos específicos para el Admin Dashboard */
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.glass-card:hover {
+  background: var(--glass-bg-secondary);
+}
+
+/* Colores de texto personalizados */
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-accent {
+  color: var(--text-accent);
+}
+
+/* Gradientes */
+.bg-gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.bg-gradient-accent {
+  background: var(--gradient-accent);
+}

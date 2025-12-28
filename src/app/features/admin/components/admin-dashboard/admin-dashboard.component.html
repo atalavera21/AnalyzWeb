@@ -1,4 +1,252 @@
-<div class="mt-8">
-  <h2 class="text-xl font-semibold mb-4">Configuración de Seguridad</h2>
-  <app-two-factor-toogle></app-two-factor-toogle>
+<!-- Dashboard de Administrador -->
+<div class="min-h-screen p-4 md:p-6">
+  <div class="max-w-7xl mx-auto">
+    <!-- Header del Dashboard -->
+    <div class="mb-8">
+      <h1 class="text-3xl md:text-4xl font-bold text-primary mb-2">
+        Panel de Administración
+      </h1>
+      <p class="text-secondary text-sm md:text-base">
+        Gestiona y analiza opiniones de productos y servicios
+      </p>
+    </div>
+
+    <!-- Métricas Principales -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8">
+      <!-- Total Comentarios -->
+      <div class="glass-card p-6 rounded-xl border border-glass-border backdrop-blur-lg hover:shadow-lg transition-all duration-300 corporate-hover">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-text-secondary text-sm mb-1">Total Comentarios</p>
+            <h3 class="text-3xl font-bold text-text-primary">{{ totalComments }}</h3>
+            <p class="text-xs text-green-400 mt-1">+{{ newCommentsToday }} hoy</p>
+          </div>
+          <div class="w-14 h-14 rounded-full bg-gradient-accent flex items-center justify-center">
+            <i class="pi pi-comments text-text-primary text-2xl"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Total Productos/Servicios -->
+      <div class="glass-card p-6 rounded-xl border border-glass-border backdrop-blur-lg hover:shadow-lg transition-all duration-300 corporate-hover">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-text-secondary text-sm mb-1">Productos/Servicios</p>
+            <h3 class="text-3xl font-bold text-text-primary">{{ totalProducts }}</h3>
+            <p class="text-xs text-text-secondary mt-1">{{ activeCategories }} categorías</p>
+          </div>
+          <div class="w-14 h-14 rounded-full bg-gradient-primary flex items-center justify-center">
+            <i class="pi pi-box text-text-primary text-2xl"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Usuarios Activos -->
+      <div class="glass-card p-6 rounded-xl border border-glass-border backdrop-blur-lg hover:shadow-lg transition-all duration-300 corporate-hover">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-text-secondary text-sm mb-1">Usuarios Activos</p>
+            <h3 class="text-3xl font-bold text-text-primary">{{ activeUsers }}</h3>
+            <p class="text-xs text-blue-400 mt-1">{{ totalUsers }} registrados</p>
+          </div>
+          <div class="w-14 h-14 rounded-full bg-gradient-accent flex items-center justify-center">
+            <i class="pi pi-users text-text-primary text-2xl"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sentimiento Promedio -->
+      <div class="glass-card p-6 rounded-xl border border-glass-border backdrop-blur-lg hover:shadow-lg transition-all duration-300 corporate-hover">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-text-secondary text-sm mb-1">Satisfacción Global</p>
+            <h3 class="text-3xl font-bold text-text-primary">{{ averageSentiment }}%</h3>
+            <p class="text-xs text-text-secondary mt-1">Basado en IA</p>
+          </div>
+          <div class="w-14 h-14 rounded-full bg-gradient-primary flex items-center justify-center neural-pulse">
+            <i class="pi pi-chart-line text-text-primary text-2xl"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gráficos y Análisis -->
+    <div class="mb-8">
+      <h2 class="text-2xl font-bold text-primary mb-4 flex items-center">
+        <i class="pi pi-chart-bar mr-3 text-accent"></i>
+        Análisis y Reportes
+      </h2>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Gráfico de Sentimientos -->
+        <div class="glass-card p-6 rounded-xl border border-glass-border backdrop-blur-lg">
+          <h3 class="font-semibold text-text-primary mb-4 flex items-center">
+            <i class="pi pi-chart-pie mr-2 text-accent"></i>
+            Distribución de Sentimientos
+          </h3>
+          <div class="text-center py-12 text-text-secondary">
+            <i class="pi pi-chart-pie text-6xl mb-3 opacity-50"></i>
+            <p>Gráfico de sentimientos</p>
+            <p class="text-sm mt-2">Implementar con Chart.js o similar</p>
+          </div>
+        </div>
+
+        <!-- Tendencias Temporales -->
+        <div class="glass-card p-6 rounded-xl border border-glass-border backdrop-blur-lg">
+          <h3 class="font-semibold text-text-primary mb-4 flex items-center">
+            <i class="pi pi-trending-up mr-2 text-accent"></i>
+            Tendencias en el Tiempo
+          </h3>
+          <div class="text-center py-12 text-text-secondary">
+            <i class="pi pi-chart-line text-6xl mb-3 opacity-50"></i>
+            <p>Gráfico de tendencias</p>
+            <p class="text-sm mt-2">Implementar con Chart.js o similar</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Acciones de Gestión -->
+    <div class="mb-8">
+      <h2 class="text-2xl font-bold text-primary mb-4 flex items-center">
+        <i class="pi pi-cog mr-3 text-accent"></i>
+        Gestión
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Gestionar Productos/Servicios -->
+        <button (click)="manageProducts()" class="glass-card p-6 rounded-xl border border-glass-border backdrop-blur-lg hover:border-accent transition-all duration-300 corporate-hover text-left group">
+          <div class="flex flex-col items-center text-center space-y-3">
+            <div class="w-16 h-16 rounded-full bg-gradient-accent flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+              <i class="pi pi-box text-text-primary text-3xl"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-text-primary">Productos/Servicios</h3>
+              <p class="text-xs text-text-secondary mt-1">Gestionar catálogo</p>
+            </div>
+          </div>
+        </button>
+
+        <!-- Gestionar Categorías -->
+        <button (click)="manageCategories()" class="glass-card p-6 rounded-xl border border-glass-border backdrop-blur-lg hover:border-accent transition-all duration-300 corporate-hover text-left group">
+          <div class="flex flex-col items-center text-center space-y-3">
+            <div class="w-16 h-16 rounded-full bg-gradient-primary flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+              <i class="pi pi-tags text-text-primary text-3xl"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-text-primary">Categorías</h3>
+              <p class="text-xs text-text-secondary mt-1">Organizar productos</p>
+            </div>
+          </div>
+        </button>
+
+        <!-- Ver Todos los Comentarios -->
+        <button (click)="viewAllComments()" class="glass-card p-6 rounded-xl border border-glass-border backdrop-blur-lg hover:border-accent transition-all duration-300 corporate-hover text-left group">
+          <div class="flex flex-col items-center text-center space-y-3">
+            <div class="w-16 h-16 rounded-full bg-glass-bg-secondary flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg border border-accent">
+              <i class="pi pi-comments text-accent text-3xl"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-text-primary">Comentarios</h3>
+              <p class="text-xs text-text-secondary mt-1">Ver todas las opiniones</p>
+            </div>
+          </div>
+        </button>
+
+        <!-- Reportes Detallados -->
+        <button (click)="viewDetailedReports()" class="glass-card p-6 rounded-xl border border-glass-border backdrop-blur-lg hover:border-accent transition-all duration-300 corporate-hover text-left group">
+          <div class="flex flex-col items-center text-center space-y-3">
+            <div class="w-16 h-16 rounded-full bg-glass-bg-secondary flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg border border-accent">
+              <i class="pi pi-file-pdf text-accent text-3xl"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-text-primary">Reportes</h3>
+              <p class="text-xs text-text-secondary mt-1">Descargar informes</p>
+            </div>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Top Productos/Servicios -->
+    <div class="mb-8">
+      <h2 class="text-2xl font-bold text-primary mb-4 flex items-center">
+        <i class="pi pi-star mr-3 text-accent"></i>
+        Mejor y Peor Evaluados
+      </h2>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Mejor Evaluados -->
+        <div class="glass-card p-6 rounded-xl border border-glass-border backdrop-blur-lg">
+          <h3 class="font-semibold text-text-primary mb-4 flex items-center">
+            <i class="pi pi-thumbs-up mr-2 text-green-400"></i>
+            Mejor Evaluados
+          </h3>
+          <div class="text-center py-8 text-text-secondary">
+            <i class="pi pi-trophy text-5xl mb-3 opacity-50 text-green-400"></i>
+            <p>Top 5 productos con mejor sentimiento</p>
+            <p class="text-sm mt-2">Datos próximamente</p>
+          </div>
+        </div>
+
+        <!-- Peor Evaluados -->
+        <div class="glass-card p-6 rounded-xl border border-glass-border backdrop-blur-lg">
+          <h3 class="font-semibold text-text-primary mb-4 flex items-center">
+            <i class="pi pi-thumbs-down mr-2 text-red-400"></i>
+            Requieren Atención
+          </h3>
+          <div class="text-center py-8 text-text-secondary">
+            <i class="pi pi-exclamation-triangle text-5xl mb-3 opacity-50 text-red-400"></i>
+            <p>Productos con sentimiento negativo</p>
+            <p class="text-sm mt-2">Datos próximamente</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Configuración de Cuenta del Admin -->
+    <div class="mb-8">
+      <h2 class="text-2xl font-bold text-primary mb-4 flex items-center">
+        <i class="pi pi-user-cog mr-3 text-accent"></i>
+        Configuración de Administrador
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Información del Admin -->
+        <div class="glass-card p-6 rounded-xl border border-glass-border backdrop-blur-lg">
+          <h3 class="font-semibold text-text-primary mb-4 flex items-center">
+            <i class="pi pi-user mr-2 text-accent"></i>
+            Información Personal
+          </h3>
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between py-2 border-b border-glass-border">
+              <span class="text-text-secondary">Nombre:</span>
+              <span class="text-text-primary font-medium">{{ getAdminFullName() }}</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-glass-border">
+              <span class="text-text-secondary">Email:</span>
+              <span class="text-text-primary font-medium">{{ getAdminEmail() }}</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-glass-border">
+              <span class="text-text-secondary">Rol:</span>
+              <span class="text-accent font-medium">Administrador</span>
+            </div>
+            <div class="flex justify-between py-2">
+              <span class="text-text-secondary">Miembro desde:</span>
+              <span class="text-text-primary font-medium">{{ getAdminCreatedDate() }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Seguridad del Admin -->
+        <div class="glass-card p-6 rounded-xl border border-glass-border backdrop-blur-lg">
+          <h3 class="font-semibold text-text-primary mb-4 flex items-center">
+            <i class="pi pi-shield mr-2 text-accent"></i>
+            Seguridad
+          </h3>
+          <app-two-factor-toogle></app-two-factor-toogle>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

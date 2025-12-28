@@ -1,15 +1,180 @@
-<div class="container mx-auto p-6">
-  <h1 class="text-2xl font-bold mb-6">Dashboard de Usuario</h1>
+<!-- Dashboard de Usuario -->
+<div class="min-h-screen p-4 md:p-6">
+  <div class="max-w-7xl mx-auto">
+    <!-- Header del Dashboard -->
+    <div class="mb-8">
+      <h1 class="text-3xl md:text-4xl font-bold text-primary mb-2">
+        Bienvenido, <span class="text-accent">{{ getUserFirstName() }}</span>
+      </h1>
+      <p class="text-secondary text-sm md:text-base">
+        Comparte tu opinión y ayuda a mejorar productos y servicios
+      </p>
+    </div>
 
-  <!-- Tu contenido actual del dashboard -->
-  <div class="grid grid-cols-1 gap-6">
-    <!-- ... tus cards actuales ... -->
-  </div>
+    <!-- Estadísticas Rápidas -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-8">
+      <!-- Card: Comentarios Totales -->
+      <div class="glass-card p-6 rounded-xl border border-glass-border backdrop-blur-lg hover:shadow-lg transition-all duration-300 corporate-hover">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-text-secondary text-sm mb-1">Mis Comentarios</p>
+            <h3 class="text-3xl font-bold text-text-primary">{{ totalComments }}</h3>
+          </div>
+          <div class="w-14 h-14 rounded-full bg-gradient-accent flex items-center justify-center">
+            <i class="pi pi-comments text-text-primary text-2xl"></i>
+          </div>
+        </div>
+      </div>
 
-  <!-- Sección de Seguridad -->
-  <div class="mt-8">
-    <h2 class="text-xl font-semibold mb-4">Seguridad de la Cuenta</h2>
-    <app-two-factor-toogle></app-two-factor-toogle>
-    <!-- ✅ Componente 2FA -->
+      <!-- Card: Categorías Analizadas -->
+      <div class="glass-card p-6 rounded-xl border border-glass-border backdrop-blur-lg hover:shadow-lg transition-all duration-300 corporate-hover">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-text-secondary text-sm mb-1">Categorías</p>
+            <h3 class="text-3xl font-bold text-text-primary">{{ categoriesReviewed }}</h3>
+          </div>
+          <div class="w-14 h-14 rounded-full bg-gradient-primary flex items-center justify-center">
+            <i class="pi pi-tags text-text-primary text-2xl"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card: Última Actividad -->
+      <div class="glass-card p-6 rounded-xl border border-glass-border backdrop-blur-lg hover:shadow-lg transition-all duration-300 corporate-hover">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-text-secondary text-sm mb-1">Última Opinión</p>
+            <h3 class="text-lg font-bold text-text-primary">{{ lastActivityDate }}</h3>
+          </div>
+          <div class="w-14 h-14 rounded-full bg-gradient-accent flex items-center justify-center neural-pulse">
+            <i class="pi pi-clock text-text-primary text-2xl"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Acciones Principales -->
+    <div class="mb-8">
+      <h2 class="text-2xl font-bold text-primary mb-4 flex items-center">
+        <i class="pi pi-star mr-3 text-accent"></i>
+        Acciones Principales
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Nueva Opinión -->
+        <button (click)="openNewReview()" class="glass-card p-6 rounded-xl border border-glass-border backdrop-blur-lg hover:border-accent transition-all duration-300 corporate-hover text-left group">
+          <div class="flex flex-col items-center text-center space-y-3">
+            <div class="w-16 h-16 rounded-full bg-gradient-accent flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+              <i class="pi pi-plus text-text-primary text-3xl"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-text-primary">Nueva Opinión</h3>
+              <p class="text-xs text-text-secondary mt-1">Comparte tu experiencia</p>
+            </div>
+          </div>
+        </button>
+
+        <!-- Explorar Categorías -->
+        <button (click)="exploreCategories()" class="glass-card p-6 rounded-xl border border-glass-border backdrop-blur-lg hover:border-accent transition-all duration-300 corporate-hover text-left group">
+          <div class="flex flex-col items-center text-center space-y-3">
+            <div class="w-16 h-16 rounded-full bg-gradient-primary flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+              <i class="pi pi-th-large text-text-primary text-3xl"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-text-primary">Explorar Categorías</h3>
+              <p class="text-xs text-text-secondary mt-1">Ver productos/servicios</p>
+            </div>
+          </div>
+        </button>
+
+        <!-- Mis Comentarios -->
+        <button (click)="viewMyComments()" class="glass-card p-6 rounded-xl border border-glass-border backdrop-blur-lg hover:border-accent transition-all duration-300 corporate-hover text-left group">
+          <div class="flex flex-col items-center text-center space-y-3">
+            <div class="w-16 h-16 rounded-full bg-glass-bg-secondary flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg border border-accent">
+              <i class="pi pi-list text-accent text-3xl"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-text-primary">Mis Comentarios</h3>
+              <p class="text-xs text-text-secondary mt-1">Historial de opiniones</p>
+            </div>
+          </div>
+        </button>
+
+        <!-- Mis Análisis -->
+        <button (click)="viewMyAnalytics()" class="glass-card p-6 rounded-xl border border-glass-border backdrop-blur-lg hover:border-accent transition-all duration-300 corporate-hover text-left group">
+          <div class="flex flex-col items-center text-center space-y-3">
+            <div class="w-16 h-16 rounded-full bg-glass-bg-secondary flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg border border-accent">
+              <i class="pi pi-chart-line text-accent text-3xl"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-text-primary">Mis Análisis</h3>
+              <p class="text-xs text-text-secondary mt-1">Ver estadísticas</p>
+            </div>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Actividad Reciente -->
+    <div class="mb-8">
+      <h2 class="text-2xl font-bold text-primary mb-4 flex items-center">
+        <i class="pi pi-history mr-3 text-accent"></i>
+        Actividad Reciente
+      </h2>
+
+      <div class="glass-card p-6 rounded-xl border border-glass-border backdrop-blur-lg">
+        <div class="text-center py-8 text-text-secondary">
+          <i class="pi pi-inbox text-5xl mb-3 opacity-50"></i>
+          <p>No hay actividad reciente</p>
+          <p class="text-sm mt-2">Comienza dejando tu primera opinión</p>
+        </div>
+        <!-- Aquí se mostrarán los comentarios recientes cuando existan -->
+      </div>
+    </div>
+
+    <!-- Configuración de Cuenta -->
+    <div class="mb-8">
+      <h2 class="text-2xl font-bold text-primary mb-4 flex items-center">
+        <i class="pi pi-cog mr-3 text-accent"></i>
+        Configuración de Cuenta
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Información Personal -->
+        <div class="glass-card p-6 rounded-xl border border-glass-border backdrop-blur-lg">
+          <h3 class="font-semibold text-text-primary mb-4 flex items-center">
+            <i class="pi pi-user mr-2 text-accent"></i>
+            Información Personal
+          </h3>
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between py-2 border-b border-glass-border">
+              <span class="text-text-secondary">Nombre:</span>
+              <span class="text-text-primary font-medium">{{ getUserFullName() }}</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-glass-border">
+              <span class="text-text-secondary">Email:</span>
+              <span class="text-text-primary font-medium">{{ getUserEmail() }}</span>
+            </div>
+            <div class="flex justify-between py-2">
+              <span class="text-text-secondary">Miembro desde:</span>
+              <span class="text-text-primary font-medium">{{ getUserCreatedDate() }}</span>
+            </div>
+          </div>
+          <button class="mt-4 w-full py-2 px-4 rounded-lg bg-glass-bg-secondary hover:bg-glass-border transition-colors text-text-primary font-medium text-sm">
+            <i class="pi pi-pencil mr-2"></i>
+            Editar Perfil
+          </button>
+        </div>
+
+        <!-- Seguridad de Cuenta -->
+        <div class="glass-card p-6 rounded-xl border border-glass-border backdrop-blur-lg">
+          <h3 class="font-semibold text-text-primary mb-4 flex items-center">
+            <i class="pi pi-shield mr-2 text-accent"></i>
+            Seguridad
+          </h3>
+          <app-two-factor-toogle></app-two-factor-toogle>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
