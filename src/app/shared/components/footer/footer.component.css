@@ -68,6 +68,26 @@
   margin: 0 0.5rem;
 }
 
+.separator-dot {
+  width: 2px;
+  height: 2px;
+  background: rgba(156, 163, 175, 0.5);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.developer-name {
+  color: #E77431;
+  font-weight: 600;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.developer-name:hover {
+  color: #FF8C52;
+  text-shadow: 0 0 8px rgba(231, 116, 49, 0.3);
+}
+
 /* Desktop Styles */
 .footer-heading {
   color: rgba(255, 255, 255, 0.4);

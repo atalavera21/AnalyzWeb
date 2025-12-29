@@ -23,8 +23,8 @@ import { PanelModule } from 'primeng/panel';
 })
 export class HomeComponent {
   scrollToFeatures(): void {
-    const element = document.getElementById('features');
-    element?.scrollIntoView({ behavior: 'smooth' });
+    const element = document.getElementById('features-section');
+    element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   // ...existing code...

@@ -1,14 +1,52 @@
 <!-- Dashboard de Administrador -->
 <div class="min-h-screen p-4 md:p-6">
   <div class="max-w-7xl mx-auto">
-    <!-- Header del Dashboard -->
-    <div class="mb-8">
+    <!-- Header del Dashboard - Versión Desktop -->
+    <div class="mb-8 hidden md:block">
       <h1 class="text-3xl md:text-4xl font-bold text-primary mb-2">
         Panel de Administración
       </h1>
       <p class="text-secondary text-sm md:text-base">
         Gestiona y analiza opiniones de productos y servicios
       </p>
+    </div>
+
+    <!-- Header del Dashboard - Versión Móvil -->
+    <div class="mb-6 md:hidden">
+      <div class="glass-card p-4 rounded-xl border border-glass-border backdrop-blur-lg">
+        <div class="flex items-center space-x-4">
+          <!-- Foto del administrador -->
+          <div class="user-avatar-mobile w-16 h-16 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0 border-2 border-accent shadow-lg">
+            <img
+              *ngIf="currentUser()?.profilePicture; else defaultIconMobile"
+              [src]="currentUser()!.profilePicture"
+              [alt]="getAdminFullName()"
+              class="w-full h-full object-cover"
+            />
+            <ng-template #defaultIconMobile>
+              <div class="w-full h-full bg-gradient-accent flex items-center justify-center">
+                <i class="pi pi-shield text-white text-2xl"></i>
+              </div>
+            </ng-template>
+          </div>
+
+          <!-- Nombre y rol -->
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 mb-1">
+              <h1 class="text-lg font-bold text-primary truncate">
+                {{ getAdminFullName() }}
+              </h1>
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-gradient-accent text-white flex-shrink-0">
+                <i class="pi pi-shield mr-1 text-xs"></i>
+                Admin
+              </span>
+            </div>
+            <p class="text-secondary text-xs truncate">
+              {{ getAdminEmail() }}
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Métricas Principales -->

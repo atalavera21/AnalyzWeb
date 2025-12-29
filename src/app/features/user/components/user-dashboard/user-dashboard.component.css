@@ -1,4 +1,4 @@
-/* Estilos específicos para el User Dashboard */
+/* Estilos especï¿½ficos para el User Dashboard */
 
 .glass-card {
   background: var(--glass-bg);
@@ -30,4 +30,19 @@
 
 .bg-gradient-accent {
   background: var(--gradient-accent);
+}
+
+/* Avatar del usuario en mÃ³vil */
+.user-avatar-mobile {
+  box-shadow: 0 4px 12px rgba(231, 116, 49, 0.4);
+  transition: all 0.3s ease;
+}
+
+.user-avatar-mobile:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(231, 116, 49, 0.5);
+}
+
+.user-avatar-mobile img {
+  object-fit: cover;
 }

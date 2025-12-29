@@ -1,14 +1,46 @@
 <!-- Dashboard de Usuario -->
 <div class="min-h-screen p-4 md:p-6">
   <div class="max-w-7xl mx-auto">
-    <!-- Header del Dashboard -->
-    <div class="mb-8">
+    <!-- Header del Dashboard - Versión Desktop -->
+    <div class="mb-8 hidden md:block">
       <h1 class="text-3xl md:text-4xl font-bold text-primary mb-2">
         Bienvenido, <span class="text-accent">{{ getUserFirstName() }}</span>
       </h1>
       <p class="text-secondary text-sm md:text-base">
         Comparte tu opinión y ayuda a mejorar productos y servicios
       </p>
+    </div>
+
+    <!-- Header del Dashboard - Versión Móvil -->
+    <div class="mb-6 md:hidden">
+      <div class="glass-card p-4 rounded-xl border border-glass-border backdrop-blur-lg">
+        <div class="flex items-center space-x-4">
+          <!-- Foto del usuario -->
+          <div class="user-avatar-mobile w-16 h-16 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0 border-2 border-accent shadow-lg">
+            <img
+              *ngIf="currentUser()?.profilePicture; else defaultIconMobile"
+              [src]="currentUser()!.profilePicture"
+              [alt]="getUserFullName()"
+              class="w-full h-full object-cover"
+            />
+            <ng-template #defaultIconMobile>
+              <div class="w-full h-full bg-gradient-accent flex items-center justify-center">
+                <i class="pi pi-user text-white text-2xl"></i>
+              </div>
+            </ng-template>
+          </div>
+
+          <!-- Nombre y descripción -->
+          <div class="flex-1 min-w-0">
+            <h1 class="text-xl font-bold text-primary truncate">
+              {{ getUserFullName() }}
+            </h1>
+            <p class="text-secondary text-xs truncate">
+              {{ getUserEmail() }}
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Estadísticas Rápidas -->

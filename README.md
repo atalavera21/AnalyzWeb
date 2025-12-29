@@ -1,4 +1,6 @@
-# AnalyzWeb
+# FeedBack Pro AI
+
+Plataforma empresarial de análisis de sentimientos con Inteligencia Artificial para identificar productos exitosos y problemáticos en tiempo real.
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.6.
 

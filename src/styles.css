@@ -13,8 +13,8 @@
   --color-neutral-dark: #ababab;
 
   /* Colores específicos para el sistema */
-  --color-glass-bg: rgba(39, 63, 79, 0.15);
-  --color-glass-bg-secondary: rgba(39, 63, 79, 0.25);
+  --color-glass-bg: rgba(26, 43, 54, 0.4);
+  --color-glass-bg-secondary: rgba(39, 63, 79, 0.35);
   --color-glass-border: rgba(231, 116, 49, 0.2);
   --color-glass-border-secondary: rgba(68, 125, 155, 0.3);
 
@@ -34,8 +34,8 @@
   --neutral-dark: #ababab;
 
   /* Colores de vidrio (glassmorphism) */
-  --glass-bg: rgba(39, 63, 79, 0.15);
-  --glass-bg-secondary: rgba(39, 63, 79, 0.25);
+  --glass-bg: rgba(26, 43, 54, 0.4);
+  --glass-bg-secondary: rgba(39, 63, 79, 0.35);
   --glass-border: rgba(231, 116, 49, 0.2);
   --glass-border-secondary: rgba(68, 125, 155, 0.3);
 
@@ -52,7 +52,10 @@
 
 /* Estilos base del cuerpo */
 body {
-  background: linear-gradient(135deg, #1a2b36 0%, #273f4f 50%, #1a2b36 100%);
+  background: radial-gradient(ellipse at center,
+    rgba(68, 125, 155, 0.08) 0%,
+    rgba(26, 43, 54, 0.95) 50%,
+    rgba(16, 25, 31, 1) 100%);
   min-height: 100vh;
   color: var(--text-primary);
   font-family: "Inter", system-ui, -apple-system, sans-serif;

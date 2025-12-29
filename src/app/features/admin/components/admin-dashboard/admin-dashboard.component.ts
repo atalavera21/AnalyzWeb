@@ -41,6 +41,8 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   // Getters para información del administrador
+  currentUser = this.authService.currentUser;
+
   getAdminFullName(): string {
     const user = this.authService.currentUser();
     return user?.fullName || `${user?.firstName} ${user?.lastName}` || 'Administrador';

@@ -852,12 +852,19 @@
   .form-row-responsive {
     display: flex !important;
     flex-direction: column !important;
-    gap: 1.25rem !important;
+    gap: 1.5rem !important;
   }
 
   .grid.grid-cols-1.md\:grid-cols-2 > *,
   .form-row-responsive > * {
     width: 100% !important;
+  }
+
+  /* Asegurar espacio extra para el campo de género */
+  .form-row-responsive .form-field:last-child {
+    margin-top: 0.5rem !important;
+    position: relative !important;
+    z-index: 1 !important;
   }
 
   /* GÉNERO: Horizontal en tablet */
@@ -876,14 +883,20 @@
     font-size: 0.8rem !important;
   }
 
-  /* Calendar responsive */
+  /* Calendar responsive - mantener el popup por encima */
   :host ::ng-deep .p-datepicker {
     width: 90vw !important;
     max-width: 350px !important;
+    z-index: 10000 !important;
   }
 }
 
 @media (max-width: 640px) {
+  /* Aumentar gap entre campos en móvil */
+  .form-row-responsive {
+    gap: 2rem !important;
+  }
+
   .gender-options-container {
     flex-direction: column;
     gap: 0.75rem;
@@ -922,6 +935,11 @@
     font-size: 1.5rem;
   }
 
+  /* Aumentar separación entre Fecha y Género en móvil */
+  .form-row-responsive {
+    gap: 2.25rem !important;
+  }
+
   /* Inputs más pequeños */
   :host ::ng-deep .auth-input-field,
   :host ::ng-deep .p-calendar .p-inputtext,
@@ -949,6 +967,7 @@
   :host ::ng-deep .p-datepicker {
     width: 95vw !important;
     max-width: 320px !important;
+    z-index: 10000 !important;
   }
 
   :host ::ng-deep .p-datepicker table td > span {
@@ -977,11 +996,16 @@
 
 
 @media (max-width: 380px) {
+  /* Máxima separación en pantallas muy pequeñas */
+  .form-row-responsive {
+    gap: 2.5rem !important;
+  }
+
   .gender-options-container {
     flex-direction: column !important;
     gap: 0.5rem !important;
   }
-  
+
   .gender-option {
     flex: none !important;
     width: 100% !important;
